@@ -97,7 +97,7 @@
 
 @media (max-width: 480px) {
     .servicios {
-        padding: 2rem 0 3rem;
+        padding: 0rem 0 3rem;
     }
     
     .servicios-grid {
