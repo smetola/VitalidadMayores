@@ -1,0 +1,268 @@
+.sobre-nos {
+    padding: 0rem 0 5rem;
+    background-color: #2C3E50;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Forma decorativa */
+.sobre-nos-shape {
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(181, 127, 80, 0.1);
+    z-index: 1;
+}
+
+.sobre-nos-intro {
+    position: relative;
+    text-align: center;
+    padding: 1rem 0 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sobre-nos-text-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.sobre-nos-highlight {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #fff;
+}
+
+/* Tarjetas de valores */
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Forzar exactamente 3 columnas */
+    gap: 2rem;
+    margin-bottom: 4rem;
+    max-width: 1200px; /* Limitar el ancho máximo */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.valor-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.valor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.valor-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(181, 127, 80, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.valor-emoji {
+    font-size: 2rem;
+    font-style: normal;
+}
+
+.valor-card h3 {
+    color: #b57f50;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.valor-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Estadísticas */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin: 4rem 0;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #b57f50;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Equipo */
+.team-preview {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.team-description {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .valores-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stats-container {
+        gap: 2rem;
+        flex-direction: column;
+    }
+    
+    .sobre-nos-highlight {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .valores-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .valores-grid {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+}
+
+/* Animaciones sutiles */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.valor-card, .stat-item, .sobre-nos-text-wrapper {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.valor-card:nth-child(1) { animation-delay: 0.2s; }
+.valor-card:nth-child(2) { animation-delay: 0.4s; }
+.valor-card:nth-child(3) { animation-delay: 0.6s; }
+
+.stat-item:nth-child(1) { animation-delay: 0.8s; }
+.stat-item:nth-child(2) { animation-delay: 1s; }
+.stat-item:nth-child(3) { animation-delay: 1.2s; }
+
+.sobre-nos-grid {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2rem;
+}
+.sobre-nos-texto {
+	flex: 1 1 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.sobre-nos-texto h2 {
+    font-family: 'The s', 'Montserrat', sans-serif;
+	font-weight: normal;
+    font-size: 2.2rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.sobre-nos-texto p {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    max-width: 500px;
+}
+.sobre-nos-foto {
+	flex: 1 1 300px;
+	text-align: center;
+}
+.sobre-nos-foto img {
+	max-width: 70%; /* Reducido de 100% a 70% */
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+	background-color: #2C3E50;
+	color: white;
+	text-align: center;
+	padding: 1rem 1rem;
+	margin: 0;
+}
+
+.section-band {
+	background-color: #2C3E50;
+	color: white;
+	text-align: center;
+	padding: 0.4rem 1rem;
+	margin: 0;
+}
+
+.section-header h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2rem;
+	margin: 0;
+	color: white;
+}
+
+.section-header p {
+	font-size: 1.1rem;
+	margin: 0.5rem 0 0 0;
+	color: #ecf0f1;
+}

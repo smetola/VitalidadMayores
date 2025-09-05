@@ -1,0 +1,128 @@
+.topband {
+    width: 100%;
+    background: #d3e4eb;
+    padding: 0.5rem 0;
+    position: fixed;      /* Fijo arriba */
+    top: 0;
+    left: 0;
+    z-index: 1000;        /* Encima del resto */
+}
+.topband-content {
+    width: 90%; /* Añadir esta línea para alinearlo con el resto */
+    max-width: 900px; /* Reducir de 1200px a 900px */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+.topband-logo1 {
+    height: 80px;
+    width: auto;
+    max-width: 220px;
+}
+.topband-logo2 {
+    height: 20px;
+    width: auto;
+}
+.topband-btn {
+    background: #b57f50;
+    color: #fff;
+    padding: 0.4rem 1.1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+    letter-spacing: 0.5px;
+}
+.topband-btn:hover {
+    background: #8b5e3c;
+}
+@media (max-width: 600px) {
+    .topband-content {
+        flex-direction: row; /* Mantiene elementos en línea */
+        gap: 0;
+        padding: 0 0.5rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .topband-logo1 {
+        height: 54px;
+        max-width: 140px;
+        margin-left: 0.5rem;      /* Más margen a la izquierda */
+        margin-top: 0.25rem;      /* Más margen arriba */
+        margin-bottom: 0.25rem;   /* Más margen abajo */
+    }
+    .topband-logo2 {
+        display: none; /* Oculta el segundo logo */
+    }
+    .topband-btn {
+        width: auto;
+        text-align: center;
+        font-size: 0.98rem;
+        padding: 0.5rem 1.1rem;
+        margin-right: 0.5rem;     /* Más margen a la derecha */
+    }
+}
+
+/* Header */
+
+.header {
+    background-color: #fff9f6;
+    color: #2C3E50;
+    text-align: left;
+    padding: 2.2rem 0.5rem 1.2rem 0.5rem;
+    margin-top: 80px; /* Ajusta según la altura real de .topband */
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    justify-content: flex-start;
+    height: 100%; /* Asegura altura completa */
+}
+
+.header-logo {
+    height: 120px; /* Más grande */
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+}
+
+.header-titulos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    gap: 0.4rem;
+}
+
+.header-titulos h1 {
+    font-family: 'The Seasons', 'Montserrat', sans-serif;
+    font-size: 2.7rem;
+    color: #2C3E50;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+.header p {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.2rem;
+	margin-bottom: 1.5rem;
+}
+
+/* Header subtitle styling */
+.subtitulo-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: #b57f50;
+    margin: 0.3rem 0 0 0;
+    letter-spacing: 1px;
+    font-weight: 500;
+    align-self: flex-start;
+}

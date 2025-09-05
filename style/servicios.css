@@ -1,0 +1,107 @@
+.servicios {
+	padding: 0rem 0 5rem;
+	background-color: #2C3E50;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Grid de servicios */
+.servicios-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 2rem;
+	margin: 2rem auto;
+	max-width: 1200px;
+}
+
+.servicio-card {
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 12px;
+	padding: 2rem;
+	text-align: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	backdrop-filter: blur(5px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: white;
+}
+
+.servicio-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.servicio-icon {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 1.5rem;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.servicio-icon img {
+	max-width: 120%;
+	max-height: 120%;
+	object-fit: contain;
+}
+
+.servicio-card h3 {
+	color: #b57f50;
+	margin-bottom: 1rem;
+	font-size: 1.4rem;
+}
+
+.servicio-card p {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+/* Animaciones sutiles */
+.servicio-card {
+	animation: fadeInUp 0.8s ease-out forwards;
+	opacity: 0;
+}
+
+.servicio-card:nth-child(1) { animation-delay: 0.1s; }
+.servicio-card:nth-child(2) { animation-delay: 0.3s; }
+.servicio-card:nth-child(3) { animation-delay: 0.5s; }
+.servicio-card:nth-child(4) { animation-delay: 0.7s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .servicios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .servicio-card {
+        padding: 1.5rem;
+    }
+    
+    .servicio-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+    
+    .servicio-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicios {
+        padding: 2rem 0 3rem;
+    }
+    
+    .servicios-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+}

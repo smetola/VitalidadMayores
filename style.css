@@ -1,0 +1,202 @@
+/* --- INICIO: Fuente personalizada The Seasons --- */
+@font-face {
+	font-family: 'The Seasons';
+	src: url('assets/fonts/The Seasons Font/Demo_Fonts/Fontspring-DEMO-theseasons-reg.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'The Seasons';
+	src: url('assets/fonts/The Seasons Font/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+}
+/* --- FIN: Fuente personalizada The Seasons --- */
+
+/* Reset básico */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Segoe UI', sans-serif;
+	line-height: 1.6;
+	background-color: #fff9f6;
+	color: #333;
+}
+/* linea central vertical QUITAR */
+/* body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50vw;
+  width: 2px;
+  height: 100vh;
+  background: red;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.7;
+} */
+
+.container {
+	width: 90%;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 1rem 0;
+}
+
+.btn {
+	display: inline-block;
+	background-color: #b57f50;
+	color: #fff;
+	padding: 0.75rem 1.5rem;
+	border-radius: 5px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.section {
+	padding: 4rem 1rem 5rem 1rem; /* Aumentado de 2rem 1rem 3.5rem 1rem */
+}
+
+.servicios h2,
+.so h2,
+.section-header h2,
+.section-band h2 {
+    color: #fff !important;
+}
+
+h2 {
+	font-family: 'The Seasons', 'Montserrat', sans-serif !important;
+	font-size: 2rem;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+
+/* Títulos de sección */
+.titulo-seccion {
+    font-family: 'The Seasons', 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-size: 2.2rem;
+    color: #2C3E50;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    letter-spacing: normal;
+}
+
+/* List styling */
+ul {
+	list-style: none;
+	padding-left: 1rem;
+}
+
+ul li::before {
+	content: "\2022";
+	color: #b57f50;
+	font-weight: bold;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+}
+
+/* Footer styling */
+.footer {
+	background-color: #2C3E50;
+	color: #ffffff;
+	text-align: center;
+	padding: 1rem;
+	font-size: 1.1rem;
+}
+
+.servicios,
+.sobre-nos{
+	background-color: #2C3E50 !important;
+}
+
+/* Headers claros: fondo crudo, texto oscuro */
+.section-header--claro {
+    background-color: #fff9f6 !important;
+}
+.section-header--claro h2 {
+    color: #2C3E50 !important;
+}
+
+/* Headers oscuros: fondo azul oscuro, texto claro */
+.section-header--oscuro {
+    background-color: #2C3E50 !important;
+}
+.section-header--oscuro h2 {
+    color: #fff9f6 !important;
+}
+
+/* --- HEADER RESPONSIVE --- */
+@media (max-width: 600px) {
+  .header {
+    padding: 1.5rem 0 0.5rem 0;
+  }
+  .container.header-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 0;
+  }
+  .header-logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+  .header-titulos h1 {
+    font-size: 1.4rem;
+    font-family: 'The Seasons', 'Montserrat', sans-serif;
+    font-weight: normal;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+  }
+  .subtitulo-header {
+    font-size: 1rem;
+    color: #b57f50;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+  }
+  .topband-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+  }
+  .topband-logo1,
+  .topband-logo2 {
+    width: 90px;
+    height: auto;
+    margin-bottom: 0.2rem;
+  }
+  .topband-btn {
+    margin-top: 0.3rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Guía linea vertical solo en móvil
+@media (max-width: 600px) {
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50vw;
+    width: 2px;
+    height: 100vh;
+    background: #b57f50;
+    opacity: 0.5;
+    z-index: 9999;
+    pointer-events: none;
+  }
+}
+*/

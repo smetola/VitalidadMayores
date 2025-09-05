@@ -1,0 +1,52 @@
+.que-somos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+.que-somos-texto {
+    flex: 1 1 300px;
+}
+.que-somos-texto h2 {
+    font-family: 'The Seasons', 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-size: 2.2rem;
+    color: #2C3E50;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+.que-somos-foto {
+    flex: 1 1 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.que-somos-foto img {
+    max-width: 70%;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 110px 110px;      /* curva grande arriba izquierda */
+    border-bottom-right-radius: 110px 110px;  /* curva grande abajo derecha */
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.mensaje-cuidado {
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: #b57f50;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+@media (max-width: 768px) {
+    .que-somos-grid {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    .que-somos-foto img {
+        max-width: 90%;
+    }
+}

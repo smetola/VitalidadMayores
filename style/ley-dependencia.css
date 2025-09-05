@@ -1,0 +1,243 @@
+.ley-dependencia {
+	padding: 3rem 0 4rem;
+}
+
+.ley-intro {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.ley-tagline {
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #b57f50;
+	max-width: 800px;
+	margin: 0 auto;
+	line-height: 1.5;
+}
+
+.ley-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+.ley-card {
+	background: white;
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ley-card-header {
+	background-color: #f9f5f0;
+	padding: 1.5rem;
+	border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
+}
+
+.ley-icon {
+	font-size: 1.8rem;
+	margin-right: 0.8rem;
+	line-height: 1;
+}
+
+.ley-card-header h3 {
+	margin: 0;
+	font-size: 1.3rem;
+	color: #2C3E50;
+}
+
+.ley-card-body {
+	padding: 1.5rem;
+	flex: 1;
+}
+
+.ley-card-body p {
+	margin-top: 0;
+	line-height: 1.6;
+	color: #444;
+}
+
+.ley-card-body ul,
+.ley-card-body ol {
+	margin: 0.5rem 0;
+	padding-left: 1.5rem;
+	line-height: 1.6;
+	color: #444;
+}
+
+.ley-card-body li {
+	margin-bottom: 0.5rem;
+}
+
+.ley-card-body strong {
+	color: #b57f50;
+}
+
+.ley-contact {
+	background: white;
+	padding: 2.5rem;
+	border-radius: 15px;
+	text-align: center;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.ley-contact h3 {
+	color: #b57f50;
+	font-size: 1.5rem;
+	margin-top: 0;
+}
+
+.ley-contact p {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin-bottom: 2rem;
+}
+
+.ley-contact a {
+	color: #b57f50;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.2s;
+}
+
+.ley-contact a:hover {
+	color: #8c6240;
+	text-decoration: underline;
+}
+
+.ley-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+}
+
+.btn-primary,
+.btn-secondary {
+	display: inline-block;
+	padding: 0.8rem 2rem;
+	border-radius: 50px;
+	font-size: 1rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.btn-primary {
+	background-color: #b57f50;
+	color: #fff !important;
+	border: 2px solid #b57f50;
+}
+
+.btn-primary:hover {
+	background-color: #a06d40;
+	border-color: #a06d40;
+	transform: translateY(-3px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+	background-color: transparent;
+	color: #b57f50;
+	border: 2px solid #b57f50;
+}
+
+.btn-secondary:hover {
+	background-color: #f9f5f0;
+	transform: translateY(-3px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Rediseño del encabezado */
+.section-header {
+	padding: 2rem 0;
+	background-color: #f9f5f0;
+	border-bottom: 1px solid #eee;
+}
+
+.cheque-header {
+	text-align: center;
+	margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+	color: #2C3E50 !important;
+	margin-bottom: 0.5rem;
+	font-size: 2.2rem;
+}
+
+.section-header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: none; /* Elimina restricciones de ancho */
+    width: 100%;
+    padding: 0;
+}
+
+.cheque-header,
+.banner-container {
+    width: 100%;
+    text-align: center;
+}
+
+.cheque-header h2,
+.cheque-header .ley-tagline {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.banner-cheque {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+	.ley-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.ley-tagline {
+		font-size: 1.2rem;
+	}
+	
+	.ley-buttons {
+		flex-direction: column;
+		gap: 1rem;
+	}
+	
+	.btn-primary,
+	.btn-secondary {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.banner-container {
+	text-align: center;
+	max-width: 850px;
+	margin: 0 auto;
+}
+
+.banner-cheque {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+.banner-cheque:hover {
+	transform: scale(1.02);
+	transition: transform 0.3s ease;
+}
