@@ -43,7 +43,7 @@
     margin-top: 0;
     background: none;
     box-shadow: none;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
 }
 
 .contacto-info-col h3 {
@@ -127,6 +127,7 @@
     transition: color 0.2s;
     word-break: break-word; /* Permite romper palabras largas como emails */
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 .contacto-item a:hover {
