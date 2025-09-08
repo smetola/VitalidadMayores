@@ -188,5 +188,6 @@
   /* Accesibilidad: si hay muchas cards, que no ocupe demasiado */
   .servicios {
     padding-bottom: 3rem;
+    padding-top: 0rem;
   } /* Aumentado de 1.25rem a 3rem */
 }
