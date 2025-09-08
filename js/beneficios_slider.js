@@ -1,11 +1,14 @@
 /**
  * Beneficios Slider - Convierte la sección de beneficios en un slider para dispositivos móviles
+ * Con diseño "peek-a-boo" que muestra parcialmente las tarjetas adyacentes
  */
 document.addEventListener('DOMContentLoaded', () => {
   // Constantes
   const MOBILE_BREAKPOINT = 1100;
   const ACTIVE_DOT_COLOR = '#b57f50';
   const INACTIVE_DOT_COLOR = '#ddd';
+  const CARD_WIDTH_PERCENTAGE = 80; // Ancho de la tarjeta principal (%)
+  const CARD_GAP = 16; // Espacio entre tarjetas (px)
   
   // Elementos principales
   const container = document.querySelector('.beneficios-nuevo');
@@ -16,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   let sliderWrapper = null;
   let dotsContainer = null;
-  let navigationButtons = { prev: null, next: null };
   let originalStyles = {
     container: {},
     slides: []
   };
+  let hasPlayedHintAnimation = false;
   
   // Inicialización
   init();
@@ -34,6 +37,56 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Listener para redimensión de ventana
     window.addEventListener('resize', checkScreenSize);
+    
+    // Configurar observador para detectar cuando la sección es visible
+    setupIntersectionObserver();
+  }
+  
+  function setupIntersectionObserver() {
+    // Solo configurar si IntersectionObserver está disponible
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && isSliderActive && !hasPlayedHintAnimation) {
+            // La sección es visible, iniciar animación después de un pequeño retraso
+            setTimeout(playHintAnimation, 800);
+            hasPlayedHintAnimation = true;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2 // Activar cuando al menos 20% del elemento es visible
+      });
+      
+      observer.observe(container);
+    }
+  }
+  
+  function playHintAnimation() {
+    if (!sliderWrapper || currentIndex !== 0) return;
+    
+    // Usar una transición más larga y una curva más suave
+    sliderWrapper.style.transition = 'transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+    
+    // Movimiento sutil hacia la derecha
+    sliderWrapper.style.transform = 'translateX(10px)';
+    
+    // Secuencia suave
+    setTimeout(() => {
+      // Movimiento más sutil hacia la izquierda
+      sliderWrapper.style.transform = 'translateX(-5%)';
+      
+      setTimeout(() => {
+        // Movimiento suave de retorno
+        sliderWrapper.style.transition = 'transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        sliderWrapper.style.transform = 'translateX(0)';
+        
+        // Restaurar la transición normal después de completar
+        setTimeout(() => {
+          sliderWrapper.style.transition = 'transform 0.3s ease';
+        }, 1500);
+      }, 1000);
+    }, 800);
   }
   
   function saveOriginalStyles() {
@@ -65,38 +118,57 @@ document.addEventListener('DOMContentLoaded', () => {
       activateSlider();
     } else if (!isMobile && isSliderActive) {
       deactivateSlider();
+      hasPlayedHintAnimation = false; // Resetear para que la animación se muestre si el usuario cambia a móvil
     }
   }
   
   function activateSlider() {
     if (isSliderActive) return;
     
-    // 1. Crear wrapper para el slider
+    // 1. Limpiar cualquier padding o margin previo
+    container.style.margin = '0';
+    container.style.overflow = 'hidden';
+    container.style.position = 'relative';
+    container.style.padding = '0';
+    
+    // 2. Crear wrapper con ancho total para todas las tarjetas
     sliderWrapper = document.createElement('div');
     sliderWrapper.classList.add('beneficios-slider-wrapper');
+    
+    // 3. Configurar cada slide
+    slides.forEach((slide) => {
+      // Establecer un ancho fijo en porcentaje para cada tarjeta
+      const slideWidth = `${CARD_WIDTH_PERCENTAGE}%`;
+      
+      // Resetear todos los estilos que puedan afectar al layout
+      slide.style.flex = 'none';
+      slide.style.width = slideWidth;
+      slide.style.margin = '0';
+      slide.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+      slide.style.borderRadius = '16px';
+      slide.style.overflow = 'hidden';
+      
+      // Crear un contenedor para cada tarjeta con el padding adecuado
+      const slideContainer = document.createElement('div');
+      slideContainer.style.cssText = `
+        padding: 0 ${CARD_GAP/2}px;
+        box-sizing: border-box;
+      `;
+      
+      // Mover la tarjeta al contenedor
+      container.removeChild(slide);
+      slideContainer.appendChild(slide);
+      sliderWrapper.appendChild(slideContainer);
+    });
+    
+    // Aplicar estilos al wrapper
     sliderWrapper.style.cssText = `
       display: flex;
       transition: transform 0.3s ease;
       width: ${slides.length * 100}%;
+      position: relative;
+      padding: 0;
     `;
-    
-    // 2. Configurar el contenedor
-    container.style.overflow = 'hidden';
-    container.style.padding = '0';
-    container.style.position = 'relative';
-    
-    // 3. Configurar cada slide
-    slides.forEach((slide) => {
-      // Aplicar estilos para el slider
-      slide.style.flex = '0 0 auto';
-      slide.style.width = `${100 / slides.length}%`;
-      slide.style.transform = 'none';
-      slide.style.margin = '0';
-      slide.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-      
-      // Mover al wrapper
-      sliderWrapper.appendChild(slide);
-    });
     
     // 4. Añadir wrapper al contenedor
     container.appendChild(sliderWrapper);
@@ -108,26 +180,35 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTouchEvents();
     
     isSliderActive = true;
-    goToSlide(0);
+    
+    // Esperar a que el DOM se actualice y luego ir al slide inicial
+    setTimeout(() => {
+      goToSlide(0, false);
+    }, 50);
   }
   
   function deactivateSlider() {
     if (!isSliderActive) return;
     
-    // 1. Restaurar slides al contenedor principal
-    slides.forEach((slide, index) => {
-      // Restaurar estilos originales
-      const originalStyle = originalStyles.slides[index];
-      if (originalStyle) {
-        slide.style.flex = originalStyle.flex;
-        slide.style.width = originalStyle.width;
-        slide.style.transform = originalStyle.transform;
-        slide.style.margin = originalStyle.margin;
-        slide.style.boxShadow = originalStyle.boxShadow;
+    // 1. Extraer slides de sus contenedores
+    const slideContainers = sliderWrapper.querySelectorAll('div');
+    slideContainers.forEach((slideContainer, index) => {
+      const slide = slideContainer.querySelector('.beneficio-fila');
+      if (slide) {
+        // Restaurar estilos originales
+        const originalStyle = originalStyles.slides[index];
+        if (originalStyle) {
+          slide.style.flex = originalStyle.flex;
+          slide.style.width = originalStyle.width;
+          slide.style.transform = originalStyle.transform;
+          slide.style.margin = originalStyle.margin;
+          slide.style.boxShadow = originalStyle.boxShadow;
+        }
+        
+        // Mover de vuelta al contenedor principal
+        slideContainer.removeChild(slide);
+        container.appendChild(slide);
       }
-      
-      // Mover de vuelta al contenedor principal
-      container.appendChild(slide);
     });
     
     // 2. Eliminar wrapper
@@ -140,38 +221,33 @@ document.addEventListener('DOMContentLoaded', () => {
       container.removeChild(dotsContainer);
     }
     
-    // 4. Eliminar botones de navegación
-    if (navigationButtons.prev && navigationButtons.prev.parentNode === container) {
-      container.removeChild(navigationButtons.prev);
-    }
-    if (navigationButtons.next && navigationButtons.next.parentNode === container) {
-      container.removeChild(navigationButtons.next);
-    }
-    
-    // 5. Restaurar estilos del contenedor
+    // 4. Restaurar estilos del contenedor
     const originalContainerStyle = originalStyles.container;
     container.style.overflow = originalContainerStyle.overflow;
     container.style.padding = originalContainerStyle.padding;
     container.style.position = originalContainerStyle.position;
+    container.style.margin = '2rem auto 4rem';
     
-    // 6. Remover eventos táctiles
+    // 5. Remover eventos táctiles
     removeTouchEvents();
     
     isSliderActive = false;
   }
   
   function createNavigation() {
-    // 1. Contenedor para los puntos
+    // Crear puntos de navegación
     dotsContainer = document.createElement('div');
     dotsContainer.classList.add('beneficios-slider-dots');
     dotsContainer.style.cssText = `
       display: flex;
       justify-content: center;
       gap: 8px;
-      padding: 20px 0;
+      padding: 5px 0 30px; /* Reducido arriba (5px) y aumentado abajo (30px) */
+      position: relative;
+      z-index: 10;
+      margin-top: -10px; /* Acerca aún más a las tarjetas */
     `;
     
-    // 2. Crear puntos
     slides.forEach((_, index) => {
       const dot = document.createElement('button');
       dot.classList.add('beneficios-slider-dot');
@@ -187,87 +263,36 @@ document.addEventListener('DOMContentLoaded', () => {
         transition: background-color 0.3s ease;
       `;
       
-      dot.addEventListener('click', () => goToSlide(index));
+      dot.addEventListener('click', () => goToSlide(index, true));
       dotsContainer.appendChild(dot);
     });
     
     container.appendChild(dotsContainer);
-    
-    // 3. Crear botones de navegación
-    const prevButton = document.createElement('button');
-    prevButton.classList.add('beneficios-slider-prev');
-    prevButton.setAttribute('aria-label', 'Anterior beneficio');
-    prevButton.innerHTML = '&lt;';
-    prevButton.style.cssText = `
-      position: absolute;
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
-      background-color: rgba(255,255,255,0.8);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      z-index: 2;
-      opacity: 0.5;
-      pointer-events: none;
-    `;
-    
-    const nextButton = document.createElement('button');
-    nextButton.classList.add('beneficios-slider-next');
-    nextButton.setAttribute('aria-label', 'Siguiente beneficio');
-    nextButton.innerHTML = '&gt;';
-    nextButton.style.cssText = `
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      background-color: rgba(255,255,255,0.8);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      z-index: 2;
-    `;
-    
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-    
-    container.appendChild(prevButton);
-    container.appendChild(nextButton);
-    
-    navigationButtons.prev = prevButton;
-    navigationButtons.next = nextButton;
   }
   
   // Variables para eventos táctiles
   let touchStartX = 0;
   let touchEndX = 0;
+  let touchMoved = false;
   
   function handleTouchStart(e) {
     touchStartX = e.changedTouches[0].screenX;
+    touchMoved = false;
+  }
+  
+  function handleTouchMove() {
+    touchMoved = true;
   }
   
   function handleTouchEnd(e) {
+    if (!touchMoved) return;
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
   }
   
   function handleSwipe() {
     const diff = touchStartX - touchEndX;
-    const threshold = 50; // Umbral para considerar un swipe
+    const threshold = 30; // Umbral para considerar un swipe
     
     if (diff > threshold) {
       // Swipe izquierda (siguiente)
@@ -280,15 +305,17 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function setupTouchEvents() {
     container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
     container.addEventListener('touchend', handleTouchEnd, { passive: true });
   }
   
   function removeTouchEvents() {
     container.removeEventListener('touchstart', handleTouchStart);
+    container.removeEventListener('touchmove', handleTouchMove);
     container.removeEventListener('touchend', handleTouchEnd);
   }
   
-  function goToSlide(index) {
+  function goToSlide(index, animate = true) {
     if (!isSliderActive) return;
     
     // Asegurar que el índice está dentro de los límites
@@ -297,8 +324,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     currentIndex = index;
     
-    // Mover el wrapper
-    sliderWrapper.style.transform = `translateX(-${index * (100 / slides.length)}%)`;
+    // Cálculo mucho más simple: simplemente dividimos el ancho total entre el número de slides
+    // y multiplicamos por el índice actual
+    const percentage = (100 / slides.length) * index;
+    
+    if (animate) {
+      sliderWrapper.style.transition = 'transform 0.3s ease';
+    } else {
+      sliderWrapper.style.transition = 'none';
+    }
+    
+    sliderWrapper.style.transform = `translateX(-${percentage}%)`;
+    
+    if (!animate) {
+      setTimeout(() => {
+        sliderWrapper.style.transition = 'transform 0.3s ease';
+      }, 50);
+    }
     
     // Actualizar los puntos de navegación
     if (dotsContainer) {
@@ -306,17 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
       dots.forEach((dot, i) => {
         dot.style.backgroundColor = i === index ? ACTIVE_DOT_COLOR : INACTIVE_DOT_COLOR;
       });
-    }
-    
-    // Actualizar botones de navegación
-    if (navigationButtons.prev) {
-      navigationButtons.prev.style.opacity = index === 0 ? '0.5' : '1';
-      navigationButtons.prev.style.pointerEvents = index === 0 ? 'none' : 'auto';
-    }
-    
-    if (navigationButtons.next) {
-      navigationButtons.next.style.opacity = index === slides.length - 1 ? '0.5' : '1';
-      navigationButtons.next.style.pointerEvents = index === slides.length - 1 ? 'none' : 'auto';
     }
   }
   
