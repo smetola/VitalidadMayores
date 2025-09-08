@@ -10,7 +10,7 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	gap: 2rem;
-	margin: 2rem auto;
+	margin: 0rem auto 2rem;
 	max-width: 1200px;
 }
 
@@ -95,13 +95,87 @@
     }
 }
 
+/* Hide slider controls by default (desktop view) */
+.slider-controls {
+  display: none;
+}
+
+/* --- Slider móvil: override grid -> track scrollable --- */
 @media (max-width: 480px) {
-    .servicios {
-        padding: 0rem 0 3rem;
-    }
-    
-    .servicios-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-    }
+  .servicios-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem 0;
+    padding-left: 1rem; /* espacio para visualizar el 'peek' */
+  }
+
+  .servicio-card {
+    min-width: 82%;
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    scroll-margin: 1rem;
+    padding: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1;
+    animation: none !important; /* Disable animation on mobile */
+  }
+
+  /* CONTROLES */
+  .slider-controls {
+    display: flex;  /* Override to show on mobile */
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: white;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform .12s ease, background .12s;
+  }
+  .slider-btn:active { transform: scale(.96); }
+  .slider-btn:focus { outline: 2px solid rgba(181,127,80,0.6); outline-offset: 2px; }
+
+  .slider-dots {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+    margin: 0 0.6rem;
+  }
+
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.22);
+    border: none;
+    padding: 0;
+    transition: all .22s ease;
+    cursor: pointer;
+  }
+  .slider-dot[aria-current="true"] {
+    width: 28px;
+    border-radius: 14px;
+    background: #b57f50; /* color destacado */
+    height: 8px;
+  }
+
+  /* Accesibilidad: si hay muchas cards, que no ocupe demasiado */
+  .servicios { padding-bottom: 1.25rem; }
 }
