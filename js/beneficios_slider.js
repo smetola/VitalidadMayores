@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       display: flex;
       justify-content: center;
       gap: 8px;
-      padding: 5px 0 30px; /* Reducido arriba (5px) y aumentado abajo (30px) */
+      padding: 5px 0 50px; /* Reducido arriba (5px) y aumentado abajo (30px) */
       position: relative;
       z-index: 10;
       margin-top: -10px; /* Acerca aún más a las tarjetas */

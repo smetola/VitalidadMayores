@@ -111,6 +111,15 @@
     gap: 1rem;
     padding: 1rem 0;
     padding-left: 1rem; /* espacio para visualizar el 'peek' */
+    
+    /* Hide scrollbar while keeping functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .servicios-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .servicio-card {
@@ -177,5 +186,8 @@
   }
 
   /* Accesibilidad: si hay muchas cards, que no ocupe demasiado */
-  .servicios { padding-bottom: 1.25rem; }
+  .servicios {
+    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+  } /* Aumentado de 1.25rem a 3rem */
 }
