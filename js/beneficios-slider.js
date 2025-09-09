@@ -220,10 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
       display: flex;
       justify-content: center;
       gap: 8px;
-      padding: 0 0 50px;
+      padding: 10px 0 50px; /* Añadido padding-top de 10px */
       position: relative;
       z-index: 10;
-      margin-top: -20px;
+      margin-top: 0; /* Cambiado de -20px a 0 */
     `;
     
     slides.forEach((_, index) => {
