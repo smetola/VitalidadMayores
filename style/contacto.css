@@ -274,14 +274,19 @@ textarea.form-control {
         flex-direction: column;
         align-items: stretch;
     }
-    .contacto-form-col,
-    .contacto-info-col {
+    .contacto-form-col{
         min-height: unset;
         margin-top: 0;
-        padding: 0 0.5rem;
+        padding: 0.5rem;
         padding-top: 0.5rem;
     }
+    .privacy-clause {
+        text-align: left;
+    }
     .contacto-info-col {
+        min-height: unset;
         margin-top: 2rem;
+        padding: 0 0.5rem;
+        padding-top: 0.5rem;
     }
 }
