@@ -1,13 +1,11 @@
 /**
- * Beneficios Slider - Convierte la sección de beneficios en un slider para dispositivos móviles
- * Con diseño "peek-a-boo" que muestra parcialmente las tarjetas adyacentes
+ * Beneficios Slider - Versión mejorada para pantallas pequeñas y medianas
  */
 document.addEventListener('DOMContentLoaded', () => {
   // Constantes
   const MOBILE_BREAKPOINT = 1100;
   const ACTIVE_DOT_COLOR = '#b57f50';
   const INACTIVE_DOT_COLOR = '#ddd';
-  const CARD_WIDTH_PERCENTAGE = 80; // Ancho de la tarjeta principal (%)
   const CARD_GAP = 16; // Espacio entre tarjetas (px)
   
   // Elementos principales
@@ -29,33 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
   init();
   
   function init() {
-    // Guardar estilos originales
     saveOriginalStyles();
-    
-    // Verificar si debemos activar el slider
     checkScreenSize();
-    
-    // Listener para redimensión de ventana
     window.addEventListener('resize', checkScreenSize);
-    
-    // Configurar observador para detectar cuando la sección es visible
     setupIntersectionObserver();
   }
   
   function setupIntersectionObserver() {
-    // Solo configurar si IntersectionObserver está disponible
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting && isSliderActive && !hasPlayedHintAnimation) {
-            // La sección es visible, iniciar animación después de un pequeño retraso
             setTimeout(playHintAnimation, 800);
             hasPlayedHintAnimation = true;
             observer.unobserve(entry.target);
           }
         });
       }, {
-        threshold: 0.2 // Activar cuando al menos 20% del elemento es visible
+        threshold: 0.2
       });
       
       observer.observe(container);
@@ -65,23 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function playHintAnimation() {
     if (!sliderWrapper || currentIndex !== 0) return;
     
-    // Usar una transición más larga y una curva más suave
     sliderWrapper.style.transition = 'transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000)';
-    
-    // Movimiento sutil hacia la derecha
     sliderWrapper.style.transform = 'translateX(10px)';
     
-    // Secuencia suave
     setTimeout(() => {
-      // Movimiento más sutil hacia la izquierda
       sliderWrapper.style.transform = 'translateX(-5%)';
       
       setTimeout(() => {
-        // Movimiento suave de retorno
         sliderWrapper.style.transition = 'transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
         sliderWrapper.style.transform = 'translateX(0)';
         
-        // Restaurar la transición normal después de completar
         setTimeout(() => {
           sliderWrapper.style.transition = 'transform 0.3s ease';
         }, 1500);
@@ -90,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   function saveOriginalStyles() {
-    // Guardar estilos del contenedor
     const containerStyles = window.getComputedStyle(container);
     originalStyles.container = {
       overflow: containerStyles.overflow,
@@ -98,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
       position: containerStyles.position
     };
     
-    // Guardar estilos de cada slide
     slides.forEach((slide, index) => {
       const slideStyles = window.getComputedStyle(slide);
       originalStyles.slides[index] = {
@@ -118,50 +98,51 @@ document.addEventListener('DOMContentLoaded', () => {
       activateSlider();
     } else if (!isMobile && isSliderActive) {
       deactivateSlider();
-      hasPlayedHintAnimation = false; // Resetear para que la animación se muestre si el usuario cambia a móvil
+      hasPlayedHintAnimation = false;
     }
   }
   
   function activateSlider() {
     if (isSliderActive) return;
     
-    // 1. Limpiar cualquier padding o margin previo
+    // 1. Limpiar estilos previos
     container.style.margin = '0';
     container.style.overflow = 'hidden';
     container.style.position = 'relative';
     container.style.padding = '0';
     
-    // 2. Crear wrapper con ancho total para todas las tarjetas
+    // 2. Crear wrapper
     sliderWrapper = document.createElement('div');
     sliderWrapper.classList.add('beneficios-slider-wrapper');
     
-    // 3. Configurar cada slide
+    // 3. Configurar cada slide para ocupar el 100% del ancho visible
     slides.forEach((slide) => {
-      // Establecer un ancho fijo en porcentaje para cada tarjeta
-      const slideWidth = `${CARD_WIDTH_PERCENTAGE}%`;
+      // Contenedor para cada tarjeta que ocupa todo el ancho
+      const slideContainer = document.createElement('div');
+      slideContainer.style.cssText = `
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 ${CARD_GAP}px;
+        display: flex;
+        justify-content: center;
+      `;
       
-      // Resetear todos los estilos que puedan afectar al layout
+      // La tarjeta dentro del contenedor
       slide.style.flex = 'none';
-      slide.style.width = slideWidth;
+      slide.style.width = '100%';
+      slide.style.maxWidth = '450px'; // Límite máximo para que no se vea demasiado ancha
       slide.style.margin = '0';
       slide.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
       slide.style.borderRadius = '16px';
       slide.style.overflow = 'hidden';
       
-      // Crear un contenedor para cada tarjeta con el padding adecuado
-      const slideContainer = document.createElement('div');
-      slideContainer.style.cssText = `
-        padding: 0 ${CARD_GAP/2}px;
-        box-sizing: border-box;
-      `;
-      
-      // Mover la tarjeta al contenedor
+      // Mover al nuevo contenedor
       container.removeChild(slide);
       slideContainer.appendChild(slide);
       sliderWrapper.appendChild(slideContainer);
     });
     
-    // Aplicar estilos al wrapper
+    // 4. Aplicar estilos al wrapper
     sliderWrapper.style.cssText = `
       display: flex;
       transition: transform 0.3s ease;
@@ -170,18 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
       padding: 0;
     `;
     
-    // 4. Añadir wrapper al contenedor
+    // 5. Añadir wrapper al contenedor
     container.appendChild(sliderWrapper);
     
-    // 5. Crear navegación
+    // 6. Crear navegación
     createNavigation();
     
-    // 6. Configurar eventos táctiles
+    // 7. Configurar eventos táctiles
     setupTouchEvents();
     
     isSliderActive = true;
     
-    // Esperar a que el DOM se actualice y luego ir al slide inicial
     setTimeout(() => {
       goToSlide(0, false);
     }, 50);
@@ -190,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function deactivateSlider() {
     if (!isSliderActive) return;
     
-    // 1. Extraer slides de sus contenedores
+    // 1. Extraer slides
     const slideContainers = sliderWrapper.querySelectorAll('div');
     slideContainers.forEach((slideContainer, index) => {
       const slide = slideContainer.querySelector('.beneficio-fila');
@@ -205,30 +185,28 @@ document.addEventListener('DOMContentLoaded', () => {
           slide.style.boxShadow = originalStyle.boxShadow;
         }
         
-        // Mover de vuelta al contenedor principal
         slideContainer.removeChild(slide);
         container.appendChild(slide);
       }
     });
     
-    // 2. Eliminar wrapper
+    // 2. Eliminar elementos creados
     if (sliderWrapper && sliderWrapper.parentNode === container) {
       container.removeChild(sliderWrapper);
     }
     
-    // 3. Eliminar navegación
     if (dotsContainer && dotsContainer.parentNode === container) {
       container.removeChild(dotsContainer);
     }
     
-    // 4. Restaurar estilos del contenedor
+    // 3. Restaurar estilos del contenedor
     const originalContainerStyle = originalStyles.container;
     container.style.overflow = originalContainerStyle.overflow;
     container.style.padding = originalContainerStyle.padding;
     container.style.position = originalContainerStyle.position;
     container.style.margin = '2rem auto 4rem';
     
-    // 5. Remover eventos táctiles
+    // 4. Remover eventos
     removeTouchEvents();
     
     isSliderActive = false;
@@ -242,10 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
       display: flex;
       justify-content: center;
       gap: 8px;
-      padding: 5px 0 4rem; /* Reducido arriba (5px) y aumentado abajo (30px) */
+      padding: 0 0 50px;
       position: relative;
       z-index: 10;
-      margin-top: -10px; /* Acerca aún más a las tarjetas */
+      margin-top: -20px;
     `;
     
     slides.forEach((_, index) => {
@@ -292,13 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function handleSwipe() {
     const diff = touchStartX - touchEndX;
-    const threshold = 30; // Umbral para considerar un swipe
+    const threshold = 30;
     
     if (diff > threshold) {
-      // Swipe izquierda (siguiente)
       nextSlide();
     } else if (diff < -threshold) {
-      // Swipe derecha (anterior)
       prevSlide();
     }
   }
@@ -318,14 +294,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function goToSlide(index, animate = true) {
     if (!isSliderActive) return;
     
-    // Asegurar que el índice está dentro de los límites
     if (index < 0) index = 0;
     if (index >= slides.length) index = slides.length - 1;
     
     currentIndex = index;
     
-    // Cálculo mucho más simple: simplemente dividimos el ancho total entre el número de slides
-    // y multiplicamos por el índice actual
+    // Calculamos la posición exacta para centrar la tarjeta actual
+    // Cada tarjeta ocupa exactamente 1/slides.length del ancho total
     const percentage = (100 / slides.length) * index;
     
     if (animate) {
@@ -342,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 50);
     }
     
-    // Actualizar los puntos de navegación
+    // Actualizar indicadores
     if (dotsContainer) {
       const dots = dotsContainer.querySelectorAll('.beneficios-slider-dot');
       dots.forEach((dot, i) => {
