@@ -1,0 +1,140 @@
+.privacy-page {
+  background-color: #fff9f6;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.privacy-header {
+  background-color: #2C3E50;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.privacy-header .container {
+  max-width: 900px;
+}
+
+.privacy-header h1 {
+  color: #fff;
+  font-family: 'The Seasons', 'Montserrat', sans-serif;
+  font-weight: normal;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.privacy-content h2 {
+  color: #2C3E50;
+  font-family: 'The Seasons', 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.privacy-content h2:first-child {
+  margin-top: 0;
+}
+
+.privacy-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.privacy-content a {
+  color: #b57f50;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.privacy-content a:hover {
+  color: #8b5e3c;
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: #b57f50;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  padding: 0.5rem 1rem;
+  border: 1px solid #b57f50;
+  border-radius: 4px;
+}
+
+.back-link:hover {
+  background-color: #b57f50;
+  color: #fff;
+  text-decoration: none;
+}
+
+.back-link svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .privacy-header {
+    padding: 1.5rem 0;
+  }
+  
+  .privacy-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .privacy-content {
+    padding: 1.5rem 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .privacy-content h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-header {
+    padding: 1.2rem 0;
+  }
+  
+  .privacy-header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .privacy-content {
+    padding: 1.2rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .privacy-content h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .privacy-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+}
