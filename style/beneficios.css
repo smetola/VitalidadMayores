@@ -1,13 +1,21 @@
 /* DISEÑO MEJORADO MANTENIENDO LA ESTRUCTURA ORIGINAL */
 .beneficios-nuevo {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin: 2rem auto 4rem; /* Reducido de 4rem auto */
+  /* Estas propiedades se moverán. Elimínalas de aquí. */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 3rem; */
+  margin: 0; /* Aseguramos que no haya márgenes extra */
   width: 100%;
   max-width: 1100px;
-  padding: 0 1.5rem;
-  padding-bottom: 2rem;
+  margin-left: auto; /* Centramos el contenedor */
+  margin-right: auto; /* Centramos el contenedor */
+}
+
+/* AÑADE ESTA NUEVA REGLA */
+.beneficios-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Este es el "aire" entre las tarjetas. Ajústalo si quieres. */
 }
 
 .beneficio-fila {
@@ -267,5 +275,167 @@
   
   .beneficio-img-wrap {
     height: 180px !important;
+  }
+}
+
+/* --- Modificar los estilos para el slider de beneficios --- */
+
+/* Ocultar controles del slider por defecto (escritorio) */
+.beneficios-slider-controls {
+  display: none;
+}
+
+/* --- Estilos del slider de beneficios (solo móvil) --- */
+@media (max-width: 480px) {
+  /* Contenedor del slider */
+  .beneficios-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1rem !important;
+    padding: 1rem 0 !important;
+    padding-left: 1rem !important;
+    margin: 0 !important;
+    width: calc(100% + 1rem) !important;
+    
+    /* Ocultar scrollbar manteniendo la funcionalidad */
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+  }
+  
+  /* Ocultar scrollbar en Chrome/Safari */
+  .beneficios-wrapper::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  /* Configuración de cada tarjeta de beneficio */
+  .beneficio-fila {
+    min-width: 85% !important;
+    flex: 0 0 85% !important;
+    scroll-snap-align: center !important;
+    scroll-margin: 1rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+    transition: box-shadow 0.3s ease !important;
+  }
+
+  /* Ajuste específico para corregir posicionamiento en filas par/impar */
+  .beneficio-fila.fila-par, 
+  .beneficio-fila.fila-impar {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Ajustes para los elementos internos de las tarjetas */
+  .beneficio-fila.fila-par .beneficio-img-wrap {
+    margin-left: 0 !important;
+  }
+  
+  .beneficio-fila.fila-impar .beneficio-img-wrap {
+    margin-right: 0 !important;
+  }
+  
+  /* Ajuste de textos */
+  .beneficio-texto {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 1rem !important;
+  }
+  
+  .beneficio-fila.fila-par .beneficio-texto,
+  .beneficio-fila.fila-impar .beneficio-texto {
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Mostrar controles en móvil */
+  .beneficios-slider-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.6rem !important;
+    margin-top: 1rem !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  /* Estilos para botones de control */
+  .beneficios-slider-controls .slider-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(44, 62, 80, 0.1);
+    border: 1px solid rgba(44, 62, 80, 0.1);
+    color: #2C3E50;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform .12s ease, background .12s;
+  }
+  
+  .beneficios-slider-controls .slider-btn:active {
+    transform: scale(.96);
+  }
+  
+  /* Estilos para los dots */
+  .beneficios-slider-controls .slider-dots {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+    margin: 0 0.6rem;
+  }
+  
+  .beneficios-slider-controls .slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(44, 62, 80, 0.22);
+    border: none;
+    padding: 0;
+    transition: all .22s ease;
+    cursor: pointer;
+  }
+  
+  .beneficios-slider-controls .slider-dot[aria-current="true"] {
+    width: 28px;
+    border-radius: 14px;
+    background: #b57f50;
+    height: 8px;
+  }
+  
+  /* Resaltar tarjeta activa */
+   .beneficio-fila.is-active {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* Eliminar línea decorativa bajo el título en modo slider */
+  .beneficio-texto h3::before {
+    display: none !important;
+  }
+  
+  /* Asegurarse de que no aparezca al hacer hover tampoco */
+  .beneficio-fila:hover .beneficio-texto h3::before {
+    opacity: 0 !important;
+  }
+}
+
+/* Asegurar que el slider no afecte al espaciado en escritorio */
+@media (min-width: 481px) {
+  .beneficios-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
   }
 }

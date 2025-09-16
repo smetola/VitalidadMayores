@@ -1,3 +1,13 @@
+/* --- INICIO: Paleta de Espaciado --- */
+:root {
+    --espacio-xs: 0.5rem;  /* Extra pequeño */
+    --espacio-s: 1rem;     /* Pequeño */
+    --espacio-m: 2rem;     /* Mediano */
+    --espacio-l: 4rem;     /* Grande */
+    --espacio-xl: 6rem;    /* Extra grande */
+}
+/* --- FIN: Paleta de Espaciado --- */
+
 /* --- INICIO: Fuente personalizada The Seasons --- */
 @font-face {
 	font-family: 'The Seasons';
@@ -41,13 +51,18 @@ body {
 } */
 
 .container {
-	width: 90%;
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 1rem 0;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.btn {
+/* --- AÑADE ESTA NUEVA CLASE DE UTILIDAD --- */
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+/*COMENTADO*/
+/* .btn {
 	display: inline-block;
 	background-color: #b57f50;
 	color: #fff;
@@ -55,13 +70,17 @@ body {
 	border-radius: 5px;
 	text-decoration: none;
 	font-weight: bold;
-}
+} */
 
 .section {
-	padding: 4rem 1rem 5rem 1rem; /* Aumentado de 2rem 1rem 3.5rem 1rem */
+    padding-top: var(--espacio-s);
+    padding-bottom: var(--espacio-xl);
+    padding-left: var(--espacio-s);
+    padding-right: var(--espacio-s);
 }
 
 .servicios h2,
+.sobre-nos h2,
 .so h2,
 .section-header h2,
 .section-band h2 {
@@ -82,8 +101,7 @@ h2 {
     font-size: 2.2rem;
     color: #2C3E50;
     text-align: center;
-    margin-bottom: 1rem;
-    margin-top: 0;
+    margin: var(--espacio-l);
     letter-spacing: normal;
 }
 
@@ -107,7 +125,7 @@ ul li::before {
 	background-color: #2C3E50;
 	color: #ffffff;
 	text-align: center;
-	padding: 1rem;
+	padding: var(--espacio-m) var(--espacio-s);
 	font-size: 1.1rem;
 }
 
@@ -182,6 +200,19 @@ ul li::before {
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
   }
+}
+
+/* Ajustes de espaciado entre secciones */
+/* .que-somos.section { ... } */
+/* .section-header--claro { ... } */
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .section {
+        /* Usa una variable más pequeña para el espaciado vertical en tablets */
+        padding-top: var(--espacio-m);
+        padding-bottom: var(--espacio-m);
+    }
 }
 
 /* Guía linea vertical solo en móvil

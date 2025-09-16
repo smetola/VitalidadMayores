@@ -1,27 +1,14 @@
 .sobre-nos {
-    padding: 0rem 0 5rem;
     background-color: #2C3E50;
     color: white;
     position: relative;
     overflow: hidden;
 }
 
-/* Forma decorativa */
-.sobre-nos-shape {
-    position: absolute;
-    top: -150px;
-    right: -150px;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(181, 127, 80, 0.1);
-    z-index: 1;
-}
-
 .sobre-nos-intro {
     position: relative;
     text-align: center;
-    padding: 1rem 0 3rem;
+    padding: 0rem 0 3rem;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -69,11 +56,19 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: rgba(181, 127, 80, 0.2);
+    background-color: #b57f5033;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    padding: 15px; /* Añadir padding para ajustar el tamaño con imágenes */
+}
+
+.valor-img {
+    width: auto;
+    height: 40px; /* Ajusta este valor según sea necesario */
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(13%) saturate(1352%) hue-rotate(346deg) brightness(92%) contrast(87%);
 }
 
 .valor-emoji {
@@ -258,7 +253,7 @@
 	font-family: 'Montserrat', sans-serif;
 	font-size: 2rem;
 	margin: 0;
-	color: white;
+	color: white !important;
 }
 
 .section-header p {

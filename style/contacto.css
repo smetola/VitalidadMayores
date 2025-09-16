@@ -1,6 +1,5 @@
 .contacto {
     background-color: #f8f6f4; /* Color más suave que el actual #f2e8e0 */
-    padding: 3rem 1rem;
 }
 
 .contacto .container {
@@ -261,7 +260,7 @@ textarea.form-control {
     font-size: 0.85rem;
     color: #777;
     line-height: 1.4;
-    text-align: justify;
+    text-align: left;
 }
 
 .privacy-clause a {

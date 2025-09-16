@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".servicios-grid");
-  const controls = document.querySelector(".slider-controls");
+  const serviciosSection = document.querySelector(".servicios");
+  if (!serviciosSection) return;
+  
+  const track = serviciosSection.querySelector(".servicios-grid");
+  const controls = serviciosSection.querySelector(".slider-controls");
   if (!track || !controls) return;
 
   const dotsContainer = controls.querySelector(".slider-dots");
@@ -49,10 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(updateActive);
   });
 
-  prevBtn.addEventListener("click", () => {
+  prevBtn?.addEventListener("click", () => {
     scrollToIndex(Math.max(0, getActiveIndex() - 1));
   });
-  nextBtn.addEventListener("click", () => {
+  
+  nextBtn?.addEventListener("click", () => {
     scrollToIndex(Math.min(cards.length - 1, getActiveIndex() + 1));
   });
 
