@@ -316,6 +316,7 @@
     min-width: 85% !important;
     flex: 0 0 85% !important;
     scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
     scroll-margin: 1rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
