@@ -52,8 +52,8 @@
         height: 54px;
         max-width: 140px;
         margin-left: 0.5rem;      /* Más margen a la izquierda */
-        margin-top: 0.25rem;      /* Más margen arriba */
-        margin-bottom: 0.25rem;   /* Más margen abajo */
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;  
     }
     .topband-logo2 {
         display: none; /* Oculta el segundo logo */
