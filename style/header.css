@@ -74,7 +74,7 @@
     color: #2C3E50;
     text-align: left;
     padding: 2.2rem 0.5rem 1.2rem 0.5rem;
-    margin-top: calc(80px + var(--espacio-s)); /* Aumentado: altura de topband + espacio pequeño */
+    margin-top: calc(80px + var(--espacio-s));
 }
 
 .header-flex {
