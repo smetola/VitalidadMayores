@@ -52,8 +52,8 @@
         height: 54px;
         max-width: 140px;
         margin-left: 0.5rem;      /* Más margen a la izquierda */
-        margin-top: 0.25rem;
-        margin-bottom: 0.25rem;  
+        margin-top: 0.25rem;      /* Más margen arriba */
+        margin-bottom: 0.25rem;   /* Más margen abajo */
     }
     .topband-logo2 {
         display: none; /* Oculta el segundo logo */
@@ -73,16 +73,15 @@
     background-color: #fff9f6;
     color: #2C3E50;
     text-align: left;
-    padding: 2.2rem 0.5rem 1.2rem 0.5rem;
-    margin-top: calc(80px + var(--espacio-s));
+    padding: 2.2rem 0.5rem 2.2rem 0.5rem;
+    margin-top: calc(80px + var(--espacio-s)); /* Aumentado: altura de topband + espacio pequeño */
 }
 
 .header-flex {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align items from the top */
     gap: 2.5rem;
     justify-content: flex-start;
-    height: 100%; /* Asegura altura completa */
 }
 
 .header-logo {
@@ -96,8 +95,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    height: 100%;
+    padding-top: 1.5rem; /* Add padding to center text with logo height */
     gap: 0.4rem;
 }
 
@@ -111,9 +109,9 @@
 }
 
 .header p {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 1.2rem;
-	margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 /* Header subtitle styling */
