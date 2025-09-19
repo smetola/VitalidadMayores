@@ -1,0 +1,198 @@
+/* Archivo para los estilos del menú de navegación en la topband */
+
+.topband-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.topband-nav a {
+    color: #2C3E50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 0.3rem 0;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.topband-nav a:hover {
+    color: #b57f50;
+}
+
+/* Efecto de línea debajo del enlace al hacer hover */
+.topband-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background-color: #b57f50;
+    transition: width 0.2s ease;
+}
+
+.topband-nav a:hover::after {
+    width: 100%;
+}
+
+/* Estilo para el enlace activo */
+.topband-nav a.active {
+    color: #b57f50;
+}
+
+.topband-nav a.active::after {
+    width: 100%;
+    background-color: #b57f50;
+}
+
+/* Estilos para el botón de hamburguesa del menú */
+.topband-menu-toggle {
+    display: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.topband-menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.topband-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #2C3E50;
+    border-radius: 4px;
+    margin: 3px 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+/* Animación refinada del botón de hamburguesa */
+.topband-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.topband-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.topband-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Ajustes para responsive */
+@media (max-width: 768px) {
+    .topband-nav {
+        gap: 1.2rem;
+    }
+    
+    .topband-nav a {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mostrar el botón de hamburguesa en móvil */
+@media (max-width: 600px) {
+    .topband-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Rediseño del menú móvil para hacerlo más elegante */
+    .topband-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.97); /* Fondo más claro y elegante */
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0; /* Pequeño padding vertical */
+        z-index: 1000;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); /* Transición más suave */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        overflow: hidden;
+        max-height: 0;
+        pointer-events: none;
+    }
+    
+    .topband-nav.open {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        max-height: 100vh; /* Altura máxima para permitir la animación */
+        pointer-events: auto;
+    }
+    
+    .topband-nav a {
+        padding: 0.9rem 1.5rem; /* Menos padding vertical */
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(181, 127, 80, 0.08); /* Borde más sutil con color corporativo */
+        font-size: 1.15rem;
+        transform: translateY(-8px);
+        opacity: 0;
+        transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+        letter-spacing: 0.8px; /* Mayor separación entre letras */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .topband-nav.open a {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    /* Tiempos de entrada escalonados para crear un efecto cascada */
+    .topband-nav a:nth-child(1) { transition-delay: 0.05s; }
+    .topband-nav a:nth-child(2) { transition-delay: 0.1s; }
+    .topband-nav a:nth-child(3) { transition-delay: 0.15s; }
+    .topband-nav a:nth-child(4) { transition-delay: 0.2s; }
+    .topband-nav a:nth-child(5) { transition-delay: 0.25s; }
+    
+    .topband-nav a:last-child {
+        border-bottom: none;
+    }
+    
+    .topband-nav a:hover, .topband-nav a:active {
+        background-color: rgba(211, 228, 235, 0.5); /* Fondo sutil al hover */
+        color: #b57f50; /* Color corporativo */
+    }
+    
+    .topband-nav a::after {
+        bottom: -2px;
+        height: 2px;
+        left: 50%;
+        width: 0;
+        transform: translateX(-50%);
+    }
+    
+    .topband-nav a:hover::after {
+        width: 40%; /* Línea inferior más sutil */
+    }
+    
+    .topband-nav a.active {
+        color: #b57f50;
+        background-color: rgba(211, 228, 235, 0.3); /* Fondo más sutil para el activo */
+    }
+    
+    .topband-nav a.active::after {
+        width: 40%;
+    }
+}

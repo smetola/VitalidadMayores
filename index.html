@@ -17,17 +17,35 @@
 	<link rel="stylesheet" href="style/contacto.css">
 	<link rel="stylesheet" href="style/dependencia.css">
 	<link rel="stylesheet" href="style/header.css">
+	<link rel="stylesheet" href="style/nav.css">
 	<link rel="stylesheet" href="style/que-somos.css">
 	<link rel="stylesheet" href="style/servicios.css">
 	<link rel="stylesheet" href="style/sobre-nos.css">
 </head>
 <body>
 	<div class="topband">
-	<div class="topband-content">
-		<img src="assets/images/VITALIDADMAYORES.png" alt="Logo" class="topband-logo1">
-		<img src="assets/images/FISIOTERAPIA.png" alt="Logo" class="topband-logo2">
-		<a href="#contacto" class="topband-btn">CONTÁCTANOS</a>
-	</div>
+    <div class="topband-content">
+        <a href="index.html" class="topband-logo-link">
+            <img src="assets/images/VITALIDADMAYORES.png" alt="Logo Vitalidad Mayores" class="topband-logo1">
+        </a>
+        
+        <nav class="topband-nav">
+            <a href="#que-somos" class="active">Qué Somos</a>
+			<a href="#beneficios-nuevo">Beneficios</a>
+			<a href="#servicios">Servicios</a>
+			<a href="#dependencia">Dependencia</a>
+			<a href="#sobre-nos">Nosotros</a>
+        </nav>
+        
+        <div class="topband-buttons-container">
+            <a href="#contacto" class="topband-btn">CONTÁCTANOS</a>
+            <div class="topband-menu-toggle" aria-expanded="false" aria-label="Menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
 </div>
 	<header class="header">
 	<div class="container header-flex">
@@ -39,7 +57,7 @@
 	</div>
 </header>
 
-<section class="que-somos section">
+<section id="que-somos" class="que-somos section">
 	<div class="container que-somos-grid">
 		<div class="que-somos-texto">
 			<h2>¿QUÉ SOMOS?</h2>
@@ -54,7 +72,7 @@
 	</div>
 </section>
 
-<section class="beneficios-nuevo section pt-0">
+<section id="beneficios-nuevo" class="beneficios-nuevo section pt-0">
     <div class="container">
         <h2 class="titulo-seccion">BENEFICIOS</h2>
     <div class="beneficios-wrapper"> <!-- AÑADE ESTE DIV ENVOLVENTE -->
@@ -121,7 +139,7 @@
     </div>
 </section>
 
-<section class="servicios section">
+<section id="servicios" class="servicios section">
     <div class="container">
 		<h2 class="titulo-seccion">SERVICIOS</h2>
         <!-- Servicios en formato de tarjetas con estilo glassmorphism -->
@@ -165,7 +183,7 @@
     </div>
 </section>
 
-<section class="dependencia section">
+<section id="dependencia" class="dependencia section">
 	<div class="container">
 		<h2 class="titulo-seccion">LEY DE LA DEPENDENCIA</h2>
 		<div class="dependencia-container">
@@ -197,7 +215,7 @@
 	</div>
 </section>
 
-<section class="sobre-nos section">
+<section id="sobre-nos" class="sobre-nos section">
   <div class="container">
     <!-- Introducción con diseño mejorado -->
 	<h2 class="titulo-seccion">SOBRE NOSOTROS</h2>
@@ -353,5 +371,8 @@
 	<script src="js/contact-form.js"></script>
 	<script src="js/servicios-slider.js"></script>
 	<script src="js/beneficios-slider.js"></script>
+	<script src="js/nav.js"></script>
 </body>
 </html>
+
+<!-- DEBUGGER -->

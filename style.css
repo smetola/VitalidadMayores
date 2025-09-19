@@ -35,6 +35,7 @@ body {
 	line-height: 1.6;
 	background-color: #fff9f6;
 	color: #333;
+	padding-top: 80px; /* Aumentado de 70px a 80px para compensar la topband más alta */
 }
 /* linea central vertical QUITAR */
 /* body::before {
@@ -57,9 +58,9 @@ body {
 }
 
 /* --- AÑADE ESTA NUEVA CLASE DE UTILIDAD --- */
-.pt-0 {
+/* .pt-0 {
     padding-top: 0 !important;
-}
+} */
 
 /*COMENTADO*/
 /* .btn {
@@ -199,6 +200,9 @@ ul li::before {
     margin-top: 0.3rem;
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
+  }
+  body {
+    padding-top: 60px; /* Reducir espacio en móvil */
   }
 }
 
