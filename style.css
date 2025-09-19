@@ -11,13 +11,13 @@
 /* --- INICIO: Fuente personalizada The Seasons --- */
 @font-face {
 	font-family: 'The Seasons';
-	src: url('assets/fonts/The Seasons Font/Demo_Fonts/Fontspring-DEMO-theseasons-reg.otf') format('opentype');
+	src: url('assets/fonts/The.Seasons/The Seasons Regular.ttf') format('opentype');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'The Seasons';
-	src: url('assets/fonts/The Seasons Font/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf') format('opentype');
+	src: url('assets/fonts/The.Seasons/The Seasons Regular.ttf') format('opentype');
 	font-weight: bold;
 	font-style: normal;
 }
