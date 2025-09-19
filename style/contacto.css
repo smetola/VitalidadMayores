@@ -1,5 +1,6 @@
 .contacto {
     background-color: #f8f6f4; /* Color más suave que el actual #f2e8e0 */
+    scroll-margin-top: 80px; /* Añade esta línea - mismo valor que el padding-top del body */
 }
 
 .contacto .container {
