@@ -8,18 +8,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Función para abrir/cerrar el menú móvil
     function toggleMenu() {
-        // Añadir clase 'active' al botón cuando el menú está abierto
-        menuToggle.classList.toggle('active');
-        
         // Toggle para abrir/cerrar el menú
         if (!nav.classList.contains('open')) {
             // Abrir menú
+            menuToggle.classList.add('active'); // Añadir clase active al abrir
             nav.classList.add('open');
             document.body.style.overflow = 'hidden'; // Prevenir scroll
             
             // Accesibilidad: Cambiar el aria-expanded
             menuToggle.setAttribute('aria-expanded', 'true');
         } else {
+            // Cerrar menú
+            menuToggle.classList.remove('active'); // Quitar clase active al cerrar
+            
             // Efecto de desvanecimiento al cerrar
             navLinks.forEach(link => {
                 link.style.opacity = '0';
@@ -53,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cerrar menú al hacer clic en un enlace
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 600) {
-                toggleMenu();
+            if (window.innerWidth <= 600 && nav.classList.contains('open')) {
+                toggleMenu(); // Solo llamar a toggleMenu si el menú está abierto
             }
             
             // Añadir clase active al enlace actual
