@@ -220,6 +220,10 @@
     order: 2 !important;
     pointer-events: auto !important;
     display: block !important;
+    height: 120px !important; /* Altura fija para estandarizar todas las tarjetas */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
   
   .beneficio-img-wrap {
@@ -229,6 +233,12 @@
     height: 220px !important;
     max-height: 220px !important;
     overflow: hidden !important;
+  }
+
+  .beneficio-img-wrap img {
+    height: 100% !important;
+    object-fit: cover !important;
+    width: 100% !important;
   }
   
   .beneficio-texto h3 {
@@ -244,13 +254,7 @@
     bottom: -12px !important;
     opacity: 1 !important;
   }
-  
-  .beneficio-img-wrap img {
-    height: 100% !important;
-    object-fit: cover !important;
-    width: 100% !important;
-  }
-  
+
   /* Ajustar degradados para versión móvil */
   .beneficio-img-wrap.derecha::after,
   .beneficio-img-wrap.izquierda::after {
@@ -267,6 +271,7 @@
   
   .beneficio-texto {
     padding: 1.2rem 1.5rem 1.8rem !important;
+    height: 110px !important; /* Altura ligeramente menor para pantallas más pequeñas */
   }
   
   .beneficio-texto h3 {
@@ -275,6 +280,13 @@
   
   .beneficio-img-wrap {
     height: 180px !important;
+  }
+}
+
+/* Ajuste específico para pantallas más pequeñas */
+@media (max-width: 375px) {
+  .beneficio-texto {
+    height: 130px !important; /* Mayor altura para pantallas muy pequeñas donde el texto ocupa más líneas */
   }
 }
 
