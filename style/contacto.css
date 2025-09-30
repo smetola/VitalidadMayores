@@ -121,7 +121,7 @@
 
 .contacto-item a {
     color: #2C3E50;
-    font-weight: 400; /* Cambiado de 500 a 400 para quitar negrita */
+    font-weight: 500;
     text-decoration: none;
     transition: color 0.2s;
     word-break: break-word; /* Permite romper palabras largas como emails */
@@ -204,6 +204,16 @@
 
 .form-control::placeholder {
     color: #888;
+}
+
+.form-control.error {
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+}
+
+.form-control.error::placeholder {
+    color: #e74c3c;
 }
 
 select.form-control {

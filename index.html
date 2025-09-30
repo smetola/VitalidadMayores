@@ -281,9 +281,12 @@
 		<div class="contacto-flex">
 			<!-- Contact Form (Left Side) -->
 			<div class="contacto-form-col">
-				<form id="contactForm" class="contacto-form" method="POST">
-					<input type="hidden" name="email_to" value="vitalidadmayoresfisioterapia@gmail.com">
-					<input type="hidden" name="email_subject" value="Nuevo e-mail desde la web - CONTACTO">
+				<form id="contactForm" class="contacto-form" action="https://formsubmit.co/vitalidadmayoresfisioterapia@gmail.com" method="POST">
+					<!-- FormSubmit Configuration -->
+					<input type="hidden" name="_subject" value="Nuevo contacto desde Vitalidad Mayores">
+					<input type="hidden" name="_captcha" value="false">
+					<input type="hidden" name="_next" value="./gracias.html">
+					<input type="hidden" name="_template" value="table">
 					
 					<div class="form-row">
 						<div class="form-group half">
