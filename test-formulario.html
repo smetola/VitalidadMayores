@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Formulario - Vitalidad Mayores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #b57f50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #8b5e3c;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🧪 Prueba de Formulario</h1>
+        
+        <div class="warning">
+            <strong>⚠️ FORMULARIO DE PRUEBA:</strong><br>
+            Este es un formulario de prueba para verificar que el envío de emails funciona correctamente. 
+            Los datos se enviarán a vitalidadmayoresfisioterapia@gmail.com
+        </div>
+        
+        <!-- MÉTODO 1: FormSubmit con Hash -->
+        <form action="https://formsubmit.co/8f5a7c2e-9d3b-4e1f-a6b8-2c4d5e9f3a7b" method="POST">
+            <input type="hidden" name="_subject" value="PRUEBA - Formulario Web Vitalidad Mayores">
+            <input type="hidden" name="_email" value="vitalidadmayoresfisioterapia@gmail.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="Prueba Test" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="prueba@test.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" value="666123456" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mensaje">Mensaje de Prueba:</label>
+                <textarea id="mensaje" name="mensaje" required>Este es un mensaje de prueba para verificar que el formulario funciona correctamente.</textarea>
+            </div>
+            
+            <button type="submit">🚀 Enviar Prueba (Método 1)</button>
+        </form>
+        
+        <hr style="margin: 30px 0;">
+        
+        <!-- MÉTODO 2: FormSubmit con Email Directo -->
+        <form action="https://formsubmit.co/vitalidadmayoresfisioterapia@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="PRUEBA DIRECTA - Formulario Web">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="form-group">
+                <label for="nombre2">Nombre:</label>
+                <input type="text" id="nombre2" name="nombre" value="Prueba Directa" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email2">Email:</label>
+                <input type="email" id="email2" name="email" value="pruebadirecta@test.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mensaje2">Mensaje:</label>
+                <textarea id="mensaje2" name="mensaje" required>Prueba método directo con email visible.</textarea>
+            </div>
+            
+            <button type="submit">📧 Enviar Prueba (Método 2)</button>
+        </form>
+        
+        <div style="margin-top: 30px; padding: 15px; background-color: #e3f2fd; border-radius: 5px;">
+            <h3>📋 Instrucciones:</h3>
+            <ol>
+                <li>Prueba <strong>ambos métodos</strong> haciendo clic en cada botón</li>
+                <li>Revisa el email <code>vitalidadmayoresfisioterapia@gmail.com</code></li>
+                <li><strong>¡IMPORTANTE!</strong> Revisa también la carpeta de <strong>SPAM</strong></li>
+                <li>Si el Método 2 pide confirmación, haz clic en el enlace</li>
+                <li>Si el Método 1 funciona, usar ese en la web principal</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
