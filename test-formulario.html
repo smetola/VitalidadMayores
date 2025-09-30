@@ -96,9 +96,9 @@
             Los datos se enviarán a vitalidadmayoresfisioterapia@gmail.com
         </div>
         
-        <!-- MÉTODO 1: FormSubmit Directo (SIN HASH) -->
-        <form action="https://formsubmit.co/vitalidadmayoresfisioterapia@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="PRUEBA MÉTODO 1 - Formulario Web Vitalidad Mayores">
+        <!-- MÉTODO 1: FormSubmit con Hash Válido -->
+        <form action="https://formsubmit.co/1187ffc3a7c64b19a36098ee75b79280" method="POST">
+            <input type="hidden" name="_subject" value="PRUEBA CON HASH VÁLIDO - Vitalidad Mayores">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_next" value="https://www.google.com">
@@ -123,7 +123,7 @@
                 <textarea id="mensaje" name="mensaje" required>Este es un mensaje de prueba para verificar que el formulario funciona correctamente.</textarea>
             </div>
             
-            <button type="submit">🚀 Enviar Prueba (Método 1 - Directo)</button>
+            <button type="submit">🚀 Enviar con Hash Válido (Método 1)</button>
         </form>
         
         <hr style="margin: 30px 0;">
@@ -151,23 +151,57 @@
             <button type="submit">📧 Enviar Prueba (Método 2)</button>
         </form>
         
+        <hr style="margin: 30px 0;">
+        
+        <!-- MÉTODO 3: Alternativa con Formspree -->
+        <div style="background-color: #e8f5e8; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <strong>🆕 MÉTODO ALTERNATIVO:</strong> Si FormSubmit no funciona, prueba Formspree (no requiere confirmación)
+        </div>
+        
+        <form action="https://formspree.io/f/xnnqpzpw" method="POST">
+            <input type="hidden" name="_subject" value="PRUEBA FORMSPREE - Vitalidad Mayores">
+            <input type="hidden" name="_replyto" value="vitalidadmayoresfisioterapia@gmail.com">
+            
+            <div class="form-group">
+                <label for="nombre3">Nombre:</label>
+                <input type="text" id="nombre3" name="nombre" value="Prueba Formspree" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email3">Email:</label>
+                <input type="email" id="email3" name="email" value="formspree@test.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mensaje3">Mensaje:</label>
+                <textarea id="mensaje3" name="mensaje" required>Prueba con Formspree - método alternativo.</textarea>
+            </div>
+            
+            <button type="submit">🌟 Enviar con Formspree (Método 3)</button>
+        </form>
+        
         <div style="margin-top: 30px; padding: 15px; background-color: #e3f2fd; border-radius: 5px;">
             <h3>📋 Instrucciones Actualizadas:</h3>
+            <div style="background-color: #d4edda; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                <strong>✅ BUENAS NOTICIAS:</strong> FormSubmit te envió el hash válido: <code>1187ffc3a7c64b19a36098ee75b79280</code><br>
+                He actualizado los formularios con este hash. ¡Ya no necesitas activación!
+            </div>
+            
             <ol>
-                <li>Prueba <strong>ambos métodos</strong> haciendo clic en cada botón</li>
-                <li><strong>PRIMERA VEZ:</strong> FormSubmit te pedirá confirmación por email</li>
+                <li><strong>Método 1:</strong> Usa el hash válido (debería funcionar inmediatamente)</li>
+                <li><strong>Método 2:</strong> Configuración mínima de FormSubmit</li>
+                <li><strong>Método 3:</strong> Alternativa con Formspree (por si acaso)</li>
+                <li>Prueba <strong>todos los métodos</strong> para ver cuál funciona mejor</li>
                 <li>Revisa el email <code>vitalidadmayoresfisioterapia@gmail.com</code></li>
-                <li><strong>¡MUY IMPORTANTE!</strong> Revisa la carpeta de <strong>SPAM/PROMOCIONES</strong></li>
-                <li>Busca un email de <strong>"FormSubmit"</strong> o <strong>"noreply@formsubmit.co"</strong></li>
-                <li><strong>Haz clic en el enlace de confirmación</strong> del email</li>
-                <li>Después de confirmar, prueba de nuevo - ¡ya debería funcionar!</li>
+                <li><strong>¡IMPORTANTE!</strong> Revisa también <strong>SPAM/PROMOCIONES</strong></li>
             </ol>
             
             <div style="background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 15px;">
                 <strong>🎯 Qué esperar:</strong><br>
-                • <strong>Método 1:</strong> Te redirigirá a Google después del envío<br>
-                • <strong>Método 2:</strong> Se quedará en FormSubmit mostrando "Success"<br>
-                • El email llegará a la bandeja de entrada (o SPAM)
+                • <strong>Método 1 (Hash):</strong> Redirige a Google + email llega<br>
+                • <strong>Método 2 (Directo):</strong> Muestra "Success" + email llega<br>
+                • <strong>Método 3 (Formspree):</strong> Muestra página de agradecimiento + email llega<br>
+                • Los emails pueden tardar 1-5 minutos en llegar
             </div>
         </div>
     </div>
