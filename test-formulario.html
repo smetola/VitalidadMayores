@@ -96,12 +96,12 @@
             Los datos se enviarán a vitalidadmayoresfisioterapia@gmail.com
         </div>
         
-        <!-- MÉTODO 1: FormSubmit con Hash -->
-        <form action="https://formsubmit.co/8f5a7c2e-9d3b-4e1f-a6b8-2c4d5e9f3a7b" method="POST">
-            <input type="hidden" name="_subject" value="PRUEBA - Formulario Web Vitalidad Mayores">
-            <input type="hidden" name="_email" value="vitalidadmayoresfisioterapia@gmail.com">
+        <!-- MÉTODO 1: FormSubmit Directo (SIN HASH) -->
+        <form action="https://formsubmit.co/vitalidadmayoresfisioterapia@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="PRUEBA MÉTODO 1 - Formulario Web Vitalidad Mayores">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://www.google.com">
             
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
@@ -123,14 +123,14 @@
                 <textarea id="mensaje" name="mensaje" required>Este es un mensaje de prueba para verificar que el formulario funciona correctamente.</textarea>
             </div>
             
-            <button type="submit">🚀 Enviar Prueba (Método 1)</button>
+            <button type="submit">🚀 Enviar Prueba (Método 1 - Directo)</button>
         </form>
         
         <hr style="margin: 30px 0;">
         
-        <!-- MÉTODO 2: FormSubmit con Email Directo -->
+        <!-- MÉTODO 2: FormSubmit con Configuración Mínima -->
         <form action="https://formsubmit.co/vitalidadmayoresfisioterapia@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="PRUEBA DIRECTA - Formulario Web">
+            <input type="hidden" name="_subject" value="PRUEBA MÉTODO 2 - Configuración Mínima">
             <input type="hidden" name="_captcha" value="false">
             
             <div class="form-group">
@@ -152,14 +152,23 @@
         </form>
         
         <div style="margin-top: 30px; padding: 15px; background-color: #e3f2fd; border-radius: 5px;">
-            <h3>📋 Instrucciones:</h3>
+            <h3>📋 Instrucciones Actualizadas:</h3>
             <ol>
                 <li>Prueba <strong>ambos métodos</strong> haciendo clic en cada botón</li>
+                <li><strong>PRIMERA VEZ:</strong> FormSubmit te pedirá confirmación por email</li>
                 <li>Revisa el email <code>vitalidadmayoresfisioterapia@gmail.com</code></li>
-                <li><strong>¡IMPORTANTE!</strong> Revisa también la carpeta de <strong>SPAM</strong></li>
-                <li>Si el Método 2 pide confirmación, haz clic en el enlace</li>
-                <li>Si el Método 1 funciona, usar ese en la web principal</li>
+                <li><strong>¡MUY IMPORTANTE!</strong> Revisa la carpeta de <strong>SPAM/PROMOCIONES</strong></li>
+                <li>Busca un email de <strong>"FormSubmit"</strong> o <strong>"noreply@formsubmit.co"</strong></li>
+                <li><strong>Haz clic en el enlace de confirmación</strong> del email</li>
+                <li>Después de confirmar, prueba de nuevo - ¡ya debería funcionar!</li>
             </ol>
+            
+            <div style="background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                <strong>🎯 Qué esperar:</strong><br>
+                • <strong>Método 1:</strong> Te redirigirá a Google después del envío<br>
+                • <strong>Método 2:</strong> Se quedará en FormSubmit mostrando "Success"<br>
+                • El email llegará a la bandeja de entrada (o SPAM)
+            </div>
         </div>
     </div>
 </body>
