@@ -99,6 +99,72 @@
             text-decoration: underline;
         }
         
+        /* Phone reveal button styles */
+        .phone-reveal-btn {
+            background: transparent;
+            color: #b57f50;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            font-family: inherit;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        
+        .phone-reveal-btn:hover {
+            color: #8c6240;
+            background: rgba(181, 127, 80, 0.08);
+            padding: 0.2rem 0.4rem;
+            margin: -0.2rem -0.4rem;
+            text-decoration: none;
+        }
+        
+        .phone-reveal-btn .phone-hidden {
+            display: flex;
+            align-items: center;
+        }
+        
+        .phone-reveal-btn .phone-number {
+            display: flex;
+            align-items: center;
+        }
+        
+        .phone-reveal-btn .phone-number a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .phone-reveal-btn .phone-number a:hover {
+            text-decoration: underline;
+        }
+        
+        .phone-revealed {
+            color: #b57f50 !important;
+            background: transparent !important;
+            cursor: default;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .phone-revealed:hover {
+            transform: none;
+            color: #b57f50 !important;
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .phone-revealed .phone-number a:hover {
+            color: #8c6240;
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
             .gracias-content {
                 padding: 2rem 1.5rem;
@@ -144,7 +210,12 @@
             
             <div class="contacto-info">
                 <h3>¿Necesitas contactarnos urgentemente?</h3>
-                <p><strong>Teléfono:</strong> <a href="tel:+34675205366">675 20 53 66</a></p>
+                <p><strong>Teléfono:</strong> <button class="phone-reveal-btn" onclick="revealPhone(this)">
+        <span class="phone-hidden">Ver teléfono</span>
+        <span class="phone-number" style="display: none;">
+            <a href="tel:+34675205366">675 20 53 66</a>
+        </span>
+    </button></p>
                 <p><strong>Email:</strong> <a href="mailto:vitalidadmayoresfisioterapia@gmail.com">vitalidadmayoresfisioterapia@gmail.com</a></p>
                 <p><strong>Horario:</strong> Lunes a Viernes de 9:00 a 20:00</p>
             </div>
@@ -157,6 +228,7 @@
         </div>
     </footer>
 
+    <script src="js/contact-form.js"></script>
     <script>
         // Redireccionar automáticamente después de 30 segundos
         setTimeout(function() {
