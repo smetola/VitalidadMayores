@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página principal -->
+  <url>
+    <loc>https://vitalidadmayores.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://vitalidadmayores.com/assets/images/VITALIDADMAYORES.png</image:loc>
+      <image:title>Vitalidad Mayores - Fisioterapia a domicilio Madrid</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vitalidadmayores.com/assets/images/fisioencasa.jpg</image:loc>
+      <image:title>Fisioterapeuta realizando tratamiento a domicilio Madrid</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Página Cheque Servicio / Ley Dependencia -->
+  <url>
+    <loc>https://vitalidadmayores.com/pages/ley-dependencia.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://vitalidadmayores.com/assets/images/bannercheque.png</image:loc>
+      <image:title>Cheque Servicio Comunidad Madrid</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Política de Privacidad -->
+  <url>
+    <loc>https://vitalidadmayores.com/pages/politica-privacidad.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

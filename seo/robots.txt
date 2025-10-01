@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Permitir todos los archivos importantes
+Allow: /assets/
+Allow: /style/
+Allow: /js/
+Allow: /*.css
+Allow: /*.js
+
+# Disallow páginas innecesarias para SEO
+Disallow: /pages/gracias.html
+
+# Permitir carpetas organizadas
+Allow: /pages/
+Allow: /seo/
+Allow: /docs/
+
+# Sitemap
+Sitemap: https://vitalidadmayores.com/seo/sitemap.xml
+
+# Crawl-delay (opcional)
+Crawl-delay: 1
