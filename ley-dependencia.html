@@ -127,7 +127,12 @@
 
 			<div class="ley-contact">
 				<h3>¿Tienes dudas?</h3>
-				<p>Llámanos al <a href="tel:+34675205366">675 20 53 66</a> o escríbenos a
+				<p>Llámanos al <button class="phone-reveal-btn" onclick="revealPhone(this)">
+        <span class="phone-hidden">Ver teléfono</span>
+        <span class="phone-number" style="display: none;">
+            <a href="tel:+34675205366">675 20 53 66</a>
+        </span>
+    </button> o escríbenos a
 				<a href="mailto:vitalidadmayoresfisioterapia@gmail.com">vitalidadmayoresfisioterapia@gmail.com</a><br>
 				y resolveremos todas tus preguntas.</p>
 				
@@ -144,5 +149,6 @@
 			<p>&copy; 2025 Emilio Ibáñez García - Fisioterapeuta en Madrid</p>
 		</div>
 	</footer>
+	<script src="js/contact-form.js"></script>
 </body>
 </html>
