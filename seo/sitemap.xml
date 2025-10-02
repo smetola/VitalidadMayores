@@ -5,12 +5,18 @@
   <!-- Página principal -->
   <url>
     <loc>https://fisioterapiamayores.com/</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://fisioterapiamayores.com/assets/images/VITALIDADMAYORES.png</image:loc>
       <image:title>Vitalidad Mayores - Fisioterapia a domicilio Madrid</image:title>
+      <image:caption>Logo oficial de Vitalidad Mayores, empresa especializada en fisioterapia a domicilio para personas mayores en Madrid</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://fisioterapiamayores.com/assets/icons/movmay/android-chrome-512x512.png</image:loc>
+      <image:title>Icono Vitalidad Mayores alta resolución</image:title>
+      <image:caption>Icono oficial Vitalidad Mayores en alta resolución para resultados de búsqueda</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://fisioterapiamayores.com/assets/images/fisioencasa.jpg</image:loc>
