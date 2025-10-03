@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const controls = serviciosSection.querySelector(".slider-controls");
   if (!track || !controls) return;
 
+  // Configurar accesibilidad según el tamaño de pantalla
+  const isMobile = window.innerWidth <= 480;
+  if (isMobile) {
+    controls.removeAttribute('aria-hidden');
+  } else {
+    controls.setAttribute('aria-hidden', 'true');
+  }
+
   const dotsContainer = controls.querySelector(".slider-dots");
   const prevBtn = controls.querySelector(".slider-btn.prev");
   const nextBtn = controls.querySelector(".slider-btn.next");
@@ -61,4 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   updateActive();
+
+  // Reaccionar a cambios de tamaño de ventana
+  window.addEventListener("resize", () => {
+    const currentIsMobile = window.innerWidth <= 480;
+    if (currentIsMobile) {
+      controls.removeAttribute('aria-hidden');
+    } else {
+      controls.setAttribute('aria-hidden', 'true');
+    }
+  });
 });

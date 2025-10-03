@@ -4,7 +4,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Solo inicializar en móvil
   const isMobile = window.innerWidth <= 480;
-  if (!isMobile) return;
 
   const beneficiosSection = document.querySelector(".beneficios-nuevo");
   if (!beneficiosSection) return;
@@ -12,6 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const track = beneficiosSection.querySelector(".beneficios-wrapper");
   const controls = beneficiosSection.querySelector(".beneficios-slider-controls");
   if (!track || !controls) return;
+
+  // Configurar accesibilidad según el tamaño de pantalla
+  if (isMobile) {
+    controls.removeAttribute('aria-hidden');
+  } else {
+    controls.setAttribute('aria-hidden', 'true');
+    return; // No inicializar slider en escritorio
+  }
 
   const dotsContainer = controls.querySelector(".slider-dots");
   const prevBtn = controls.querySelector(".slider-btn.prev");
@@ -82,8 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Reaccionar a cambios de tamaño de ventana
   window.addEventListener("resize", () => {
-    if (window.innerWidth <= 480) {
+    const currentIsMobile = window.innerWidth <= 480;
+    if (currentIsMobile) {
+      controls.removeAttribute('aria-hidden');
       updateActive();
+    } else {
+      controls.setAttribute('aria-hidden', 'true');
     }
   });
 });
