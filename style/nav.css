@@ -50,7 +50,7 @@
 
 /* Estilos para el botón de hamburguesa del menú */
 .topband-menu-toggle {
-    display: none;
+    display: none; /* Oculto por defecto en escritorio */
     cursor: pointer;
     transition: transform 0.3s ease;
     padding: 4px;
@@ -58,10 +58,7 @@
     width: 32px;
     height: 32px;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* Las demás propiedades de flex se aplicarán solo cuando se muestre en móvil */
 }
 
 .topband-menu-toggle:hover {

@@ -35,8 +35,7 @@
 	<meta name="geo.placename" content="Madrid">
 	<meta name="geo.position" content="40.4168;-3.7038">
 	<meta name="ICBM" content="40.4168, -3.7038">
-	
-	<title>Vitalidad Mayores</title>
+	<!-- Eliminado segundo <title> redundante: mantenemos solo el primero para evitar señales confusas a buscadores -->
 	
 	<!-- Favicons Optimizados -->
 	<link rel="icon" type="image/x-icon" href="assets/icons/movmay/favicon.ico">
@@ -49,8 +48,11 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/movmay/apple-touch-icon.png">
 	
 	<!-- Logo principal para Google -->
+	<!-- ESTE ES EL LOGO / FAVICON QUE GOOGLE UTILIZA PARA MOSTRAR EL PEQUEÑO ICONO JUNTO AL RESULTADO EN LAS BÚSQUEDAS (equivalente al <img class="XNo5Ab" ...> de tu ejemplo). Si cambias esta ruta o la imagen, podrá actualizarse el icono que ves en el snippet del buscador. -->
 	<link rel="shortcut icon" type="image/png" href="assets/icons/movmay/android-chrome-512x512.png">
 	<link rel="icon" type="image/png" href="assets/icons/movmay/android-chrome-512x512.png">
+	<!-- Favicon ICO clásico para máxima compatibilidad (ya existente en assets) -->
+	<link rel="icon" type="image/x-icon" href="assets/icons/movmay/favicon.ico">
 	
 	<!-- Web App Manifest optimizado -->
 	<link rel="manifest" href="seo/site.webmanifest">
@@ -178,6 +180,19 @@
 	  "copyrightNotice": "© 2025 Vitalidad Mayores. Logo y marca registrada. Uso no autorizado prohibido.",
 	  "license": "https://fisioterapiamayores.com/pages/politica-privacidad.html",
 	  "acquireLicensePage": "https://fisioterapiamayores.com/pages/politica-privacidad.html"
+	}
+	</script>
+
+	<!-- Organization Schema añadido para reforzar asociación dominio-logo en Google -->
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Organization",
+	  "@id": "https://fisioterapiamayores.com/#org",
+	  "name": "Vitalidad Mayores",
+	  "url": "https://fisioterapiamayores.com/",
+	  "logo": "https://fisioterapiamayores.com/assets/icons/movmay/android-chrome-512x512.png",
+	  "sameAs": []
 	}
 	</script>
 
