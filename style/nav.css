@@ -84,6 +84,11 @@
     position: relative;
 }
 
+/* Margen reducido a 2px cuando está en modo X */
+.topband-menu-toggle.active span {
+    margin: 2px 0;
+}
+
 /* Animación refinada del botón de hamburguesa */
 .topband-menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(3px, 4px);
