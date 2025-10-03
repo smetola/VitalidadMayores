@@ -55,10 +55,21 @@
     transition: transform 0.3s ease;
     padding: 5px;
     border-radius: 4px;
+    background: none;
+    border: none;
+    outline: none;
+    width: 24px;
+    height: 18px;
 }
 
 .topband-menu-toggle:hover {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+.topband-menu-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    outline: 2px solid #2C3E50;
+    outline-offset: 2px;
 }
 
 .topband-menu-toggle span {
