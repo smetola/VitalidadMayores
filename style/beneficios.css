@@ -421,7 +421,7 @@
     cursor: pointer;
   }
   
-  .beneficios-slider-controls .slider-dot[aria-current="true"] {
+  .beneficios-slider-controls .slider-dot[aria-pressed="true"] {
     width: 28px;
     border-radius: 14px;
     background: #b57f50;

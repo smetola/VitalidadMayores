@@ -205,7 +205,7 @@
     transition: all .22s ease;
     cursor: pointer;
   }
-  .slider-dot[aria-current="true"] {
+  .slider-dot[aria-pressed="true"] {
     width: 28px;
     border-radius: 14px;
     background: #b57f50; /* color destacado */

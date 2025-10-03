@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dot = document.createElement("button");
     dot.className = "slider-dot";
     dot.setAttribute("aria-label", `Ir al servicio ${i + 1}`);
+    dot.setAttribute("aria-pressed", "false");
     dot.dataset.index = i;
     dot.addEventListener("click", () => scrollToIndex(i));
     dotsContainer.appendChild(dot);
@@ -52,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dotsContainer
       .querySelectorAll(".slider-dot")
       .forEach((dot, i) =>
-        dot.setAttribute("aria-current", i === idx ? "true" : "false")
+        dot.setAttribute("aria-pressed", i === idx ? "true" : "false")
       );
   }
 
