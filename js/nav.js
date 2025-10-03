@@ -49,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listeners
     if (menuToggle) {
         menuToggle.addEventListener('click', toggleMenu);
+        
+        // Soporte para teclado (accesibilidad)
+        menuToggle.addEventListener('keydown', function(event) {
+            // Activar con Enter o Espacio
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleMenu();
+            }
+        });
     }
     
     // Cerrar menú al hacer clic en un enlace
