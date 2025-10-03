@@ -1,6 +1,8 @@
 # VS Code settings and configurations
 .vscode/
 
+.OG-HD/
+
 # OS generated files
 .DS_Store
 .DS_Store?
