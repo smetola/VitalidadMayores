@@ -10,6 +10,7 @@ Allow: /*.js
 
 # Disallow páginas innecesarias para SEO
 Disallow: /pages/gracias.html
+Disallow: /?s=
 
 # Permitir carpetas organizadas
 Allow: /pages/

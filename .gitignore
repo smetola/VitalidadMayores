@@ -1,5 +1,6 @@
-# VS Code settings and configurations
+# VS Code and Agent settings
 .vscode/
+.agents/
 
 .OG-HD/
 
