@@ -44,4 +44,36 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Rehabilitación prótesis cadera y rodilla -->
+  <url>
+    <loc>https://fisioterapiamayores.com/pages/rehabilitacion-protesis-cadera-rodilla.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Fisioterapia tras ictus -->
+  <url>
+    <loc>https://fisioterapiamayores.com/pages/fisioterapia-ictus-domicilio.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Fisioterapia neurológica -->
+  <url>
+    <loc>https://fisioterapiamayores.com/pages/fisioterapia-neurologica-mayores.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Movilidad y prevención de caídas -->
+  <url>
+    <loc>https://fisioterapiamayores.com/pages/movilidad-prevencion-caidas.html</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

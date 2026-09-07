@@ -211,3 +211,112 @@
         width: 40%;
     }
 }
+
+/* ============================================================
+   Dropdown de Tratamientos en el menú principal
+   ============================================================ */
+
+.nav-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-dropdown-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    min-width: 220px;
+    z-index: 200;
+    overflow: hidden;
+    padding: 0.4rem 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(181, 127, 80, 0.12);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown-menu:hover {
+    display: block;
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 0.7rem 1.2rem;
+    color: #2C3E50;
+    font-size: 0.97rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    border-bottom: 1px solid rgba(181, 127, 80, 0.07);
+    /* Resetear estilos heredados del topband-nav a */
+    position: static;
+    letter-spacing: 0;
+}
+
+.nav-dropdown-menu a::after {
+    display: none !important;
+}
+
+.nav-dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown-menu a:hover {
+    background: #f9f5f0;
+    color: #b57f50;
+}
+
+/* En móvil el dropdown se integra en el menú vertical */
+@media (max-width: 600px) {
+    .nav-dropdown {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-dropdown-toggle {
+        padding: 0.9rem 1.5rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(181, 127, 80, 0.08);
+        font-size: 1.15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        background: rgba(249, 245, 240, 0.85);
+        min-width: 100%;
+        display: none;
+        padding: 0;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+        display: block;
+    }
+
+    .nav-dropdown-menu a {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(181, 127, 80, 0.06);
+    }
+}

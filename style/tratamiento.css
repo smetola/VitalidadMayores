@@ -1,0 +1,138 @@
+/* ============================================================
+   tratamiento.css
+   Estilos específicos para las páginas de tratamiento/patología
+   Complementa a ley-dependencia.css (que ya está cargado)
+   ============================================================ */
+
+/* Bloque de apertura: texto introductorio bajo el header */
+.tratamiento-intro {
+	background: #f9f5f0;
+	border-left: 4px solid #b57f50;
+	border-radius: 0 10px 10px 0;
+	padding: 1.5rem 2rem;
+	margin-bottom: 2.5rem;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tratamiento-intro p {
+	margin: 0 0 0.8rem 0;
+	font-size: 1.05rem;
+	line-height: 1.7;
+	color: #444;
+}
+
+.tratamiento-intro p:last-child {
+	margin-bottom: 0;
+}
+
+/* Nav de tratamientos en la topband (páginas internas) */
+.tratamientos-nav {
+	font-size: 1rem !important;
+	gap: 1rem !important;
+}
+
+.tratamientos-nav a {
+	font-size: 1rem !important;
+}
+
+/* ============================================================
+   Tarjetas de tratamientos en el index (sección Servicios)
+   ============================================================ */
+
+.subtitulo-tratamientos {
+	color: #b57f50;
+	font-size: 1.1rem;
+	font-weight: 600;
+	text-align: center;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 2.5rem 0 1.2rem;
+}
+
+.tratamientos-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.tratamiento-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(181, 127, 80, 0.25);
+	border-radius: 12px;
+	padding: 1.5rem 1.2rem;
+	text-decoration: none;
+	color: white;
+	transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tratamiento-card:hover {
+	background: rgba(181, 127, 80, 0.18);
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tratamiento-icon {
+	font-size: 2.2rem;
+	margin-bottom: 0.8rem;
+	line-height: 1;
+}
+
+.tratamiento-card h4 {
+	color: #b57f50;
+	font-size: 1rem;
+	margin: 0 0 0.6rem;
+	font-weight: 700;
+}
+
+.tratamiento-card p {
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 0.9rem;
+	line-height: 1.5;
+	margin: 0;
+}
+
+/* Responsive grid de tarjetas de tratamiento */
+@media (max-width: 1200px) {
+	.tratamientos-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.tratamiento-intro {
+		padding: 1rem 1.2rem;
+		border-radius: 0 8px 8px 0;
+	}
+
+	.tratamiento-intro p {
+		font-size: 0.97rem;
+	}
+
+	.tratamientos-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 0.9rem;
+	}
+
+	.tratamiento-card {
+		padding: 1.1rem 0.8rem;
+	}
+
+	.tratamiento-icon {
+		font-size: 1.8rem;
+	}
+
+	.tratamiento-card h4 {
+		font-size: 0.88rem;
+	}
+
+	.tratamiento-card p {
+		font-size: 0.82rem;
+	}
+}
