@@ -227,27 +227,63 @@
     user-select: none;
 }
 
+/* Puente invisible entre el botón y el desplegable para mantener el hover */
+.nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    right: -20px;
+    height: 18px; /* Cubre con holgura los 12px de separación */
+    background: transparent;
+    pointer-events: none;
+}
+
+.nav-dropdown:hover::after {
+    pointer-events: auto;
+}
+
 .nav-dropdown-menu {
-    display: none;
     position: absolute;
     top: calc(100% + 12px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-6px);
     background: rgba(255, 255, 255, 0.98);
     border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     min-width: 220px;
     z-index: 200;
-    overflow: hidden;
     padding: 0.4rem 0;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(181, 127, 80, 0.12);
+
+    /* Control de visibilidad con transición suave y tolerancia anti-cierre accidental */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    transition-delay: 0.12s; /* Margen de gracia de 120ms para no desaparecer bruscamente */
+}
+
+/* Puente invisible complementario en la parte superior del propio menú */
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    right: 0;
+    height: 16px;
+    background: transparent;
 }
 
 .nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown-menu:hover {
-    display: block;
+.nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0s; /* Apertura inmediata al hacer hover */
 }
 
 .nav-dropdown-menu a {
@@ -265,12 +301,19 @@
     letter-spacing: 0;
 }
 
+.nav-dropdown-menu a:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
 .nav-dropdown-menu a::after {
     display: none !important;
 }
 
 .nav-dropdown-menu a:last-child {
     border-bottom: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .nav-dropdown-menu a:hover {
@@ -284,6 +327,11 @@
         width: 100%;
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .nav-dropdown::after,
+    .nav-dropdown-menu::before {
+        display: none;
     }
 
     .nav-dropdown-toggle {
@@ -307,6 +355,10 @@
         min-width: 100%;
         display: none;
         padding: 0;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: none;
     }
 
     .nav-dropdown.open .nav-dropdown-menu {
