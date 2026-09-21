@@ -2,7 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
+        // Anti-bot: registrar timestamp de carga del formulario
+        const formLoadTime = Date.now();
+
         contactForm.addEventListener('submit', function(e) {
+            // Anti-bot: rechazar envíos demasiado rápidos (bots < 3 segundos)
+            const elapsedSeconds = (Date.now() - formLoadTime) / 1000;
+            if (elapsedSeconds < 3) {
+                e.preventDefault();
+                return; // Silencioso — no dar pistas al bot
+            }
+
             // Validation
             const requiredFields = document.querySelectorAll('.required');
             let isValid = true;
@@ -64,11 +74,15 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Phone validation function (accepts Spanish formats)
+// Phone validation function (SOLO teléfonos españoles)
 function isValidPhone(phone) {
     // Remove spaces, dashes, and parentheses
     const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
-    // Spanish phone: 9 digits starting with 6, 7, 8, or 9, or with +34 prefix
+    // Rechazar explícitamente prefijos internacionales que no sean +34
+    if (cleanPhone.startsWith('+') && !cleanPhone.startsWith('+34')) {
+        return false;
+    }
+    // Solo teléfonos españoles: 9 dígitos empezando por 6, 7, 8 o 9, con o sin +34
     const phoneRegex = /^(\+34)?[6789]\d{8}$/;
     return phoneRegex.test(cleanPhone);
 }
