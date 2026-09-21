@@ -130,6 +130,12 @@ ul li::before {
 	font-size: 1.1rem;
 }
 
+.footer-acreditaciones {
+	margin-top: 0.4rem;
+	font-size: 0.95rem;
+	opacity: 0.85;
+}
+
 .servicios,
 .sobre-nos{
 	background-color: #2C3E50 !important;

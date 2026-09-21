@@ -72,16 +72,4 @@ function isValidPhone(phone) {
     const phoneRegex = /^(\+34)?[6789]\d{8}$/;
     return phoneRegex.test(cleanPhone);
 }
-
-// Función global para revelar teléfono
-function revealPhone(button) {
-    const hiddenText = button.querySelector('.phone-hidden');
-    const phoneNumber = button.querySelector('.phone-number');
-    
-    if (hiddenText && phoneNumber) {
-        hiddenText.style.display = 'none';
-        phoneNumber.style.display = 'inline';
-        button.classList.add('phone-revealed');
-        button.onclick = null; // Deshabilitar el click
-    }
-}
+

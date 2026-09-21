@@ -1,0 +1,159 @@
+/* ============================================================
+   BOTÓN FLOTANTE WHATSAPP (FAB)
+   Archivo: style/whatsapp-fab.css
+   Para desactivar el TOOLTIP: comentar el bloque marcado
+   con "TOOLTIP - INICIO" y "TOOLTIP - FIN"
+   ============================================================ */
+
+/* --- Botón principal --- */
+.whatsapp-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999; /* Por debajo del nav (z-index: 1000) */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+
+    /* Color corporativo mate - no usar background brillante */
+    background-color: #2C3E50;
+    color: #ffffff;
+    text-decoration: none;
+
+    /* Sombra sutil y difusa */
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.18);
+
+    /* Transición suave para hover */
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+
+    /* Animación de entrada al cargar */
+    animation: whatsappFadeIn 0.4s ease-out forwards;
+    opacity: 0; /* Parte invisible, la animación lo revela */
+}
+
+.whatsapp-fab:hover {
+    background-color: #b57f50; /* Dorado bronce — acento de la web */
+    box-shadow: 0 4px 18px rgba(181, 127, 80, 0.25);
+    transform: translateY(-2px);
+}
+
+/* --- Icono SVG --- */
+.whatsapp-fab svg {
+    width: 30px;
+    height: 30px;
+    fill: #ffffff;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* --- Animación de entrada --- */
+@keyframes whatsappFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   TOOLTIP - INICIO
+   Para DESACTIVAR el tooltip: comentar desde aquí hasta
+   "TOOLTIP - FIN". Basta con envolver en /* ... * /
+   ============================================================ */
+
+/* Contenedor relativo para posicionar el tooltip */
+.whatsapp-fab {
+    /* Necesario para el posicionamiento del tooltip */
+    position: fixed; /* ya estaba, se confirma */
+}
+
+/* El tooltip como pseudo-elemento */
+.whatsapp-fab::before {
+    content: '¿Hablamos?';
+    position: absolute;
+    right: calc(100% + 12px); /* A la izquierda del botón */
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+
+    /* Tipografía */
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+    color: #ffffff;
+
+    /* Aspecto tipo burbuja de chat */
+    background-color: #2C3E50;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+
+    /* Oculto por defecto */
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Flecha del tooltip apuntando a la derecha */
+.whatsapp-fab::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 4px); /* Justo entre el tooltip y el botón */
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+
+    /* Triángulo CSS */
+    border: 5px solid transparent;
+    border-left-color: #2C3E50;
+
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Mostrar tooltip al hacer hover */
+.whatsapp-fab:hover::before,
+.whatsapp-fab:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* ============================================================
+   TOOLTIP - FIN
+   ============================================================ */
+
+
+/* --- Responsive: móvil --- */
+@media (max-width: 600px) {
+    .whatsapp-fab {
+        width: 50px;
+        height: 50px;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .whatsapp-fab svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* En móvil el tooltip se desactiva (no hay hover táctil real) */
+    .whatsapp-fab::before,
+    .whatsapp-fab::after {
+        display: none;
+    }
+}
