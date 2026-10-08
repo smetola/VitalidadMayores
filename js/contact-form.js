@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
+        // Endpoint protegido de FormSubmit (ensamblado dinámicamente para no exponerlo en HTML plano a bots)
+        const FS_ENDPOINT = 'https://formsubmit.co/' + atob('YWE4OTU0YWI3NmFlZWQ0OGY0NTQxMmFiZjc2YjEyYzE=');
+
+        // Asignar el endpoint en cuanto el usuario interactúe con el formulario (clic, toque o foco)
+        const armForm = function() {
+            contactForm.action = FS_ENDPOINT;
+        };
+        contactForm.addEventListener('focusin', armForm, { once: true });
+        contactForm.addEventListener('click', armForm, { once: true });
+        contactForm.addEventListener('touchstart', armForm, { once: true });
+
         // Anti-bot: registrar timestamp de carga del formulario
         const formLoadTime = Date.now();
 
@@ -55,12 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 return;
             }
+
+            // Asegurar que el action esté asignado al endpoint
+            contactForm.action = FS_ENDPOINT;
             
             // Show loading state
             const submitButton = contactForm.querySelector('.btn-form');
-            const originalText = submitButton.innerHTML;
             submitButton.innerHTML = '<span>Enviando...</span>';
-            submitButton.disabled = true;
+            setTimeout(() => {
+                submitButton.disabled = true;
+            }, 10);
             
             // Form will be submitted normally to FormSubmit
             // No need to prevent default if validation passes
